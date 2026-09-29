@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KRUIZLY Black Label — Ultra Luxury Mobility</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/luxury.css">
+</head>
+<body class="site">
+<header class="nav">
+  <a class="brand" href="#"><span class="mark">K</span><span>KRUIZLY <small>BLACK LABEL</small></span></a>
+  <nav class="navlinks">
+    <a href="#fleet">Fleet</a><a href="#services">Services</a><a href="#experience">Experience</a><a href="#contact">Concierge</a>
+  </nav>
+  <a class="nav-cta" href="#book">Request a Chauffeur</a>
+  <button class="menu-btn" onclick="document.body.classList.toggle('menu-open')">☰</button>
+</header>
+
+<main>
+<section class="hero luxury-grid">
+  <div class="hero-copy">
+    <p class="eyebrow">KRUIZLY / BLACK LABEL</p>
+    <h1>Arrive<br><em>unmistakably.</em></h1>
+    <p class="lead">Ultra-luxury mobility for airport transfers, corporate travel, weddings, private events and journeys that deserve more than a car.</p>
+    <div class="actions"><a class="btn gold" href="#book">Reserve a vehicle</a><a class="btn ghost" href="#fleet">Explore fleet</a></div>
+    <div class="micro-stats"><span><b>24/7</b> Concierge</span><span><b>Premium</b> Chauffeurs</span><span><b>Pan-India</b> Network</span></div>
+  </div>
+  <div class="hero-car">
+    <div class="halo"></div>
+    <div class="car-placeholder">
+      <span>ULTRA LUXURY</span>
+      <strong>MAYBACH</strong>
+      <small>Replace with your approved fleet asset</small>
+    </div>
+  </div>
+</section>
+
+<section id="fleet" class="section">
+  <div class="section-head"><div><p class="eyebrow">THE COLLECTION</p><h2>Machines with presence.</h2></div><span class="section-no">01 / 04</span></div>
+  <div id="fleet-grid" class="fleet-grid"></div>
+</section>
+
+<section id="services" class="dark-section">
+  <div class="section-head"><div><p class="eyebrow">PRIVATE MOBILITY</p><h2>Built around your time.</h2></div></div>
+  <div class="service-grid">
+    <article><span>01</span><h3>Chauffeur</h3><p>Professional, discreet, punctual chauffeur service with executive-grade hospitality.</p></article>
+    <article><span>02</span><h3>Airport</h3><p>Flight-aware pickups, terminal coordination and seamless luggage handling.</p></article>
+    <article><span>03</span><h3>Corporate</h3><p>Recurring executive travel, meetings, roadshows and corporate account support.</p></article>
+    <article><span>04</span><h3>Occasions</h3><p>Weddings, private celebrations, productions and high-touch event movement.</p></article>
+  </div>
+</section>
+
+<section id="experience" class="section split">
+  <div><p class="eyebrow">THE KRUIZLY STANDARD</p><h2>Luxury is not a trim level.</h2><p class="lead">It is the complete movement of a guest — from booking to doorstep, with every detail coordinated.</p></div>
+  <div class="manifesto"><div><b>01</b><span>Curated fleet</span></div><div><b>02</b><span>Verified chauffeurs</span></div><div><b>03</b><span>Hub-based availability</span></div><div><b>04</b><span>Dedicated concierge</span></div></div>
+</section>
+
+<section id="book" class="booking">
+  <div><p class="eyebrow">PRIVATE CONCIERGE</p><h2>Tell us where you're going.</h2><p>Request a vehicle and our concierge team will coordinate availability, pricing and chauffeur details.</p></div>
+  <form onsubmit="requestRide(event)">
+    <div class="form-row"><input required placeholder="Full name"><input required type="tel" placeholder="Phone"></div>
+    <div class="form-row"><select id="booking-fleet"><option>Mercedes-Maybach</option><option>Toyota Vellfire</option><option>Mercedes-Benz S-Class</option><option>BMW 7 Series</option><option>Range Rover</option></select><input required placeholder="Pickup city"></div>
+    <div class="form-row"><input required type="date"><input required type="time"></div>
+    <button class="btn gold full">Request concierge</button>
+  </form>
+</section>
+</main>
+
+<footer id="contact"><div class="brand"><span class="mark">K</span><span>KRUIZLY <small>BLACK LABEL</small></span></div><p>Ultra-luxury mobility, connected to KRUIZLY.</p><a href="https://www.kruizly.com">kruizly.com</a></footer>
+<script src="shared/config.js"></script><script src="shared/api.js"></script><script src="shared/app.js"></script>
+</body></html>
