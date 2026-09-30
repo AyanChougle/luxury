@@ -64,7 +64,6 @@ const HERO_SLIDES = [
   { id: "GHOST", name: "Rolls-Royce Ghost Series II", tagline: "Post-Opulent Perfection & Peerless Prestige", image: "assets/ghost.png", price: 65000, seats: "4 VIP Seats", power: "563 hp V12" },
   { id: "MAYBACH", name: "Mercedes-Maybach S-Class", tagline: "The Benchmark of Sovereign Chauffeur Travel", image: "assets/maybach.png", price: 25000, seats: "4 VIP Seats", power: "503 hp V8 Biturbo" },
   { id: "VELLFIRE", name: "Toyota Vellfire Lounge", tagline: "Private Jet Mobility on the Ground", image: "assets/vellfire.png", price: 18000, seats: "6 VIP Seats", power: "193 hp Hybrid Glide" },
-  { id: "CARNIVAL", name: "Kia Carnival Limousine Plus", tagline: "First-Class Limousine Suite on Wheels", image: "assets/carnival.png", price: 15000, seats: "7 VIP Seats", power: "193 hp Turbo Diesel" },
   { id: "M9", name: "MG M9 EV Sovereign Lounge", tagline: "Zero-Emission Boardroom on Wheels", image: "assets/m9.png", price: 17500, seats: "6 VIP Seats", power: "245 hp Pure EV" },
   { id: "RANGEROVER", name: "Range Rover Autobiography", tagline: "Commanding Presence with Unmatched Serenity", image: "assets/rangerover.png", price: 24000, seats: "5 VIP Seats", power: "350 hp Twin-Turbo" },
   { id: "BMW7", name: "BMW 7 Series Protection", tagline: "Futuristic Authority & Cinematic Travel", image: "assets/bmw7.png", price: 19000, seats: "4 VIP Seats", power: "381 hp TwinPower" },

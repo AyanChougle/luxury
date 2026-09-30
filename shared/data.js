@@ -107,40 +107,6 @@ const LUXURY_FLEET_DATA = [
     ]
   },
   {
-    id: "CARNIVAL",
-    name: "Kia Carnival Limousine Plus",
-    brand: "Kia Black Label",
-    model: "Carnival Limousine Plus VIP",
-    type: "Executive VIP Lounge",
-    category: "lounge",
-    categoryLabel: "Executive VIP Lounge",
-    seats: 7,
-    bags: 6,
-    price: 15000,
-    priceHour: 750,
-    chauffeurRate: 2000,
-    deposit: 10000,
-    transmission: "8-Speed Sports Automatic",
-    fuel: "2.2L Smartstream CRDi Diesel",
-    status: "Available",
-    image: "assets/carnival.png",
-    tagline: "First-Class Limousine Suite on Wheels",
-    specs: {
-      power: "193 hp / 441 Nm",
-      engine: "2.2L Smartstream Turbo Diesel",
-      sound: "Bose 12-Speaker Premium Sound",
-      acceleration: "Smooth Torque-Rich Highway Glide"
-    },
-    features: [
-      "Second-Row Powered Relaxation Ottoman Seats with Leg Support",
-      "Dual Electric Panoramic Sunroofs with Independent Blinds",
-      "Bose 12-Speaker Centerpoint Audio Suite",
-      "One-Touch Smart Power Sliding Doors & Smart Tailgate",
-      "Tri-Zone Independent Climate Control with Roof Air Vents",
-      "Executive Sunshade Blinds & 64-Color Ambient Mood Lighting"
-    ]
-  },
-  {
     id: "M9",
     name: "MG M9 EV Sovereign Lounge",
     brand: "MG Luxury",
@@ -271,6 +237,7 @@ const LUXURY_FLEET_DATA = [
       "Augmented Reality Head-Up Display",
       "OLED Center Touchscreen & Wireless VIP Tablets",
       "Double-Glazed Acoustic Comfort Glass"
+    ]
   }
 ];
 
@@ -286,7 +253,7 @@ const INITIAL_BOOKINGS = [
   { id: "KZ-UL-1042", guestName: "Vikramaditya Birla", guestPhone: "+91 98200 91823", guestEmail: "v.birla@investcorp.in", vehicleId: "GHOST", vehicleName: "Rolls-Royce Ghost Series II", hubCode: "BOM", hubName: "Mumbai Hub", pickupCity: "Mumbai (BKC)", pickupDate: "2026-10-02", pickupTime: "10:00", returnDate: "2026-10-04", returnTime: "18:00", days: 2, total: 130000, chauffeur: true, status: "CONFIRMED" },
   { id: "KZ-UL-1041", guestName: "Aaradhya Kapoor", guestPhone: "+91 98110 44211", guestEmail: "aaradhya@kapoormedia.com", vehicleId: "VELLFIRE", vehicleName: "Toyota Vellfire Lounge", hubCode: "DEL", hubName: "Delhi NCR Hub", pickupCity: "New Delhi (Aerocity)", pickupDate: "2026-10-01", pickupTime: "08:30", returnDate: "2026-10-03", returnTime: "20:00", days: 2, total: 36000, chauffeur: true, status: "CONFIRMED" },
   { id: "KZ-UL-1040", guestName: "Jayesh Mehta", guestPhone: "+91 98980 77123", guestEmail: "mehta@suratgems.com", vehicleId: "RANGEROVER", vehicleName: "Range Rover Autobiography", hubCode: "STV", hubName: "Surat Hub", pickupCity: "Surat (Dumas)", pickupDate: "2026-09-30", pickupTime: "14:00", returnDate: "2026-10-02", returnTime: "14:00", days: 2, total: 48000, chauffeur: true, status: "ON_TRIP" },
-  { id: "KZ-UL-1039", guestName: "Rohan Deshmukh", guestPhone: "+91 98200 11982", guestEmail: "rohan@deshmukhfilms.in", vehicleId: "CARNIVAL", vehicleName: "Kia Carnival Limousine Plus", hubCode: "BOM", hubName: "Mumbai Hub", pickupCity: "Mumbai (Juhu)", pickupDate: "2026-09-27", pickupTime: "09:00", returnDate: "2026-09-29", returnTime: "21:00", days: 2, total: 30000, chauffeur: true, status: "COMPLETED" },
+  { id: "KZ-UL-1039", guestName: "Rohan Deshmukh", guestPhone: "+91 98200 11982", guestEmail: "rohan@deshmukhfilms.in", vehicleId: "M9", vehicleName: "MG M9 EV Sovereign Lounge", hubCode: "BOM", hubName: "Mumbai Hub", pickupCity: "Mumbai (Juhu)", pickupDate: "2026-09-27", pickupTime: "09:00", returnDate: "2026-09-29", returnTime: "21:00", days: 2, total: 35000, chauffeur: true, status: "COMPLETED" },
   { id: "KZ-UL-1038", guestName: "Zubin Mehta", guestPhone: "+91 98450 33881", guestEmail: "zubin@techventure.com", vehicleId: "BMW7", vehicleName: "BMW 7 Series Protection", hubCode: "BLR", hubName: "Bengaluru Hub", pickupCity: "Bengaluru (UB City)", pickupDate: "2026-10-04", pickupTime: "11:00", returnDate: "2026-10-06", returnTime: "18:00", days: 2, total: 38000, chauffeur: true, status: "CONFIRMED" },
   { id: "KZ-UL-1037", guestName: "Farhan Wadia", guestPhone: "+91 98230 55912", guestEmail: "farhan@wadiaestates.com", vehicleId: "MAYBACH", vehicleName: "Mercedes-Maybach S-Class", hubCode: "GOI", hubName: "Goa Hub", pickupCity: "Goa (North Coast Villa)", pickupDate: "2026-10-10", pickupTime: "12:00", returnDate: "2026-10-13", returnTime: "12:00", days: 3, total: 75000, chauffeur: true, status: "CONFIRMED" }
 ];
@@ -294,7 +261,7 @@ const INITIAL_BOOKINGS = [
 // Persistent state management
 class LuxuryDataManager {
   constructor() {
-    this.storageKey = "kruizly_black_label_state_v4";
+    this.storageKey = "kruizly_black_label_state_v5";
     this.activeHubKey = "kruizly_active_hub";
     this.init();
   }
@@ -307,7 +274,7 @@ class LuxuryDataManager {
       saved = null;
     }
 
-    if (!saved || !Array.isArray(saved.fleets) || saved.fleets.length === 0) {
+    if (!saved || !Array.isArray(saved.fleets) || saved.fleets.length !== LUXURY_FLEET_DATA.length) {
       this.data = {
         fleets: LUXURY_FLEET_DATA,
         hubs: LUXURY_HUBS,
