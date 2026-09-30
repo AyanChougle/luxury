@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>24/7 Concierge & Operations Desk — KRUIZLY Black Label</title>
+  <meta name="description" content="Contact the KRUIZLY Black Label 24/7 private concierge desk. Direct telephone, WhatsApp dispatch, regional executive hub directory, and live booking status lookup.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/luxury.css">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <style>
+    .contact-hero {
+      padding: 110px 7vw 60px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 15%, #18150f, #050505 75%);
+      border-bottom: 1px solid var(--line-subtle);
+    }
+    .contact-hero h1 {
+      font-size: clamp(42px, 6vw, 76px);
+      margin: 16px 0;
+    }
+    .contact-hero p {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 16px;
+      color: var(--muted);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 50px;
+      padding: 80px 7vw;
+    }
+    .contact-card-box {
+      background: var(--surface);
+      border: 1px solid var(--line-subtle);
+      border-radius: var(--radius-md);
+      padding: 34px;
+      margin-bottom: 24px;
+      transition: var(--transition);
+    }
+    .contact-card-box:hover {
+      border-color: var(--gold);
+    }
+    .contact-card-box h3 {
+      font-family: var(--display);
+      font-size: 24px;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+    .hub-grid-detail {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .hub-item {
+      background: var(--surface);
+      border: 1px solid var(--line-subtle);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+      transition: var(--transition);
+    }
+    .hub-item:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+    .hub-code {
+      display: inline-block;
+      padding: 2px 8px;
+      background: rgba(199, 163, 90, 0.12);
+      border: 1px solid var(--line);
+      color: var(--gold2);
+      border-radius: var(--radius-pill);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .hub-item strong {
+      display: block;
+      font-size: 16px;
+      font-family: var(--display);
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+    .hub-item p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .status-lookup-box {
+      background: var(--surface-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      margin-top: 30px;
+    }
+    @media (max-width: 960px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        padding: 50px 6vw;
+        gap: 36px;
+      }
+      .hub-grid-detail {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body class="site">
+  <!-- NAVIGATION -->
+  <header class="nav">
+    <a class="brand" href="index.html">
+      <span class="mark">K</span>
+      <span>KRUIZLY <small>BLACK LABEL</small></span>
+    </a>
+    
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="fleet.html">The Fleet</a>
+      <a href="services.html">VIP Protocols</a>
+      <a href="booking.html">Reserve</a>
+      <a href="bookings.html">My Bookings</a>
+      <a href="contact.html" style="color:var(--gold2)">Concierge Desk</a>
+    </nav>
+    
+    <a class="nav-cta" href="booking.html">Reserve a Machine</a>
+    <button class="menu-btn" aria-label="Toggle Navigation Drawer">☰</button>
+  </header>
+
+  <!-- MOBILE SLIDE-OUT DRAWER -->
+  <div class="mobile-drawer">
+    <a href="index.html">Home Overview <span>01 →</span></a>
+    <a href="fleet.html">The Fleet Collection <span>02 →</span></a>
+    <a href="services.html">VIP Protocols & Tariffs <span>03 →</span></a>
+    <a href="booking.html" class="gold-text">Reserve a Machine <span>04 →</span></a>
+    <a href="bookings.html">My VIP Bookings & Passes <span>05 →</span></a>
+    <a href="contact.html" class="gold-text">24/7 Operations Desk <span>★ Current</span></a>
+    <a href="admin/index.html" style="font-size:12px;color:var(--dim)">Staff Command Centre ↗</a>
+  </div>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="contact-hero">
+      <p class="eyebrow">COMMAND & DISPATCH OPERATIONS</p>
+      <h1>Private Concierge<br><em>& Operations Desk.</em></h1>
+      <p>
+        Direct, instantaneous communication with our senior mobility coordinators. We operate 24 hours a day, 365 days a year across all Indian aviation corridors and financial capitals.
+      </p>
+    </section>
+
+    <!-- CONTACT & HUBS SECTION -->
+    <section class="contact-grid">
+      <!-- Left Column: Operations Hotline & Status Lookup -->
+      <div>
+        <div class="contact-card-box">
+          <span style="font-size:11px;color:var(--gold);letter-spacing:0.15em;font-weight:700;text-transform:uppercase">PRIMARY DISPATCH</span>
+          <h3 style="margin-top:6px">24/7 Operations Hotline</h3>
+          <p style="color:var(--muted);font-size:13px;line-height:1.7;margin-bottom:20px">
+            For immediate VIP reservations, tarmac security clearances, or flight schedule amendments.
+          </p>
+          <div style="font-size:24px;font-family:var(--display);color:var(--gold2);margin-bottom:14px">
+            +91 91671 64547
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a href="tel:+919167164547" class="btn gold" style="padding:10px 18px;font-size:12px">Call Operations</a>
+            <a href="https://wa.me/919167164547?text=Hello%20KRUIZLY%20Concierge%2C%20I%20am%20contacting%20you%20regarding%20an%20active%20itinerary." target="_blank" rel="noopener" class="btn ghost" style="padding:10px 18px;font-size:12px">WhatsApp Direct</a>
+          </div>
+        </div>
+
+        <div class="contact-card-box">
+          <span style="font-size:11px;color:var(--gold);letter-spacing:0.15em;font-weight:700;text-transform:uppercase">EXECUTIVE CORRESPONDENCE</span>
+          <h3 style="margin-top:6px">Diplomatic & Corporate Desk</h3>
+          <p style="color:var(--muted);font-size:13px;line-height:1.7;margin-bottom:12px">
+            Official embassy logistics, high-volume corporate accounts, and vendor procurement.
+          </p>
+          <div style="font-size:16px;color:var(--cream);font-family:var(--display)">
+            concierge@kruizly.com
+          </div>
+          <div style="font-size:12px;color:var(--muted);margin-top:4px">
+            Encrypted correspondence: blacklabel@kruizly.com
+          </div>
+        </div>
+
+        <!-- VIP PASS LOOKUP -->
+        <div class="status-lookup-box">
+          <span style="font-size:11px;color:var(--gold);letter-spacing:0.15em;font-weight:700;text-transform:uppercase">GUEST SELF-SERVICE</span>
+          <h3 style="font-family:var(--display);font-size:20px;color:var(--gold2);margin:6px 0 10px">Lookup Booking Status</h3>
+          <p style="font-size:12px;color:var(--muted);margin-bottom:16px">
+            Enter your reservation reference number to verify assigned vehicle, hub dispatch, and chauffeur status.
+          </p>
+          <div style="display:flex;gap:8px">
+            <input id="lookupId" placeholder="e.g. KZ-UL-1042" style="font-size:13px;text-transform:uppercase">
+            <button type="button" class="btn gold" onclick="lookupBookingStatus()" style="white-space:nowrap;padding:10px 18px;font-size:12px">Search</button>
+          </div>
+          <div id="lookupResult" style="margin-top:16px"></div>
+        </div>
+      </div>
+
+      <!-- Right Column: Regional Hubs Directory -->
+      <div>
+        <div style="margin-bottom:20px">
+          <p class="eyebrow">NETWORK FOOTPRINT</p>
+          <h2 style="font-size:32px;margin:8px 0">Regional Executive Garages.</h2>
+          <p style="color:var(--muted);font-size:14px">
+            Our temperature-controlled private garages ensure every vehicle arrives in immaculate showroom presentation.
+          </p>
+        </div>
+
+        <div class="hub-grid-detail">
+          <!-- Hub 1: BOM -->
+          <div class="hub-item">
+            <span class="hub-code">BOM HUB</span>
+            <strong>Mumbai Flagship</strong>
+            <p>
+              Terminal 2 VIP Forecourt, Chhatrapati Shivaji Maharaj Intl Airport (CSMIA) & The Capital, Bandra-Kurla Complex (BKC).
+            </p>
+            <div style="font-size:11px;color:var(--gold2);margin-top:8px">Fleet: Maybach, Vellfire, S-Class, BMW 7, Ghost</div>
+          </div>
+
+          <!-- Hub 2: DEL -->
+          <div class="hub-item">
+            <span class="hub-code">DEL HUB</span>
+            <strong>Delhi NCR Enclave</strong>
+            <p>
+              Worldmark Aerocity, Indira Gandhi International Airport (IGI T3 / General Aviation) & Diplomatic Enclave, Chanakyapuri.
+            </p>
+            <div style="font-size:11px;color:var(--gold2);margin-top:8px">Fleet: Maybach, S-Class, Range Rover, Coach</div>
+          </div>
+
+          <!-- Hub 3: STV -->
+          <div class="hub-item">
+            <span class="hub-code">STV HUB</span>
+            <strong>Surat Diamond Corridor</strong>
+            <p>
+              Dumas Airport Road & Surat Diamond Bourse (SDB) Executive Staging Garage.
+            </p>
+            <div style="font-size:11px;color:var(--gold2);margin-top:8px">Fleet: Vellfire Lounge, Maybach S-Class</div>
+          </div>
+
+          <!-- Hub 4: BLR -->
+          <div class="hub-item">
+            <span class="hub-code">BLR HUB</span>
+            <strong>Bengaluru Tech Corridor</strong>
+            <p>
+              UB City, Vittal Mallya Road & Kempegowda Intl Airport (BLR T2 Private Jet Terminal).
+            </p>
+            <div style="font-size:11px;color:var(--gold2);margin-top:8px">Fleet: Maybach, BMW 7 Series, Range Rover</div>
+          </div>
+
+          <!-- Hub 5: GOI -->
+          <div class="hub-item" style="grid-column: span 2">
+            <span class="hub-code">GOI HUB</span>
+            <strong>Goa Coastal Pavilion</strong>
+            <p>
+              Dabolim Airport Forecourt & Manohar Intl Airport (MOPA VIP Aviation Corridor). Specialized luxury transfers for coastal private villas and high-profile luxury weddings.
+            </p>
+            <div style="font-size:11px;color:var(--gold2);margin-top:8px">Fleet: Vellfire Lounge, Mercedes-Benz S-Class, Range Rover</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-col">
+        <div class="brand" style="margin-bottom:16px">
+          <span class="mark">K</span>
+          <span>KRUIZLY <small>BLACK LABEL</small></span>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7">
+          Sovereign mobility collective. Ultra-luxury fleet operations across Mumbai, Delhi NCR, Surat, Bengaluru, and Goa.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home Overview</a></li>
+          <li><a href="fleet.html">The Fleet Collection</a></li>
+          <li><a href="services.html">VIP Protocols & Services</a></li>
+          <li><a href="contact.html">Concierge Desk</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Command Portals</h4>
+        <ul>
+          <li><a href="admin/index.html">Admin Command Centre</a></li>
+          <li><a href="manager/index.html">Hub Operations Portal</a></li>
+          <li><a href="executive/index.html">Executive Board View</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Direct Concierge</h4>
+        <p style="font-size:13px;color:var(--cream);margin-bottom:6px">Call: +91 91671 64547</p>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:14px">WhatsApp Dispatch Available 24/7</p>
+        <a class="btn gold" href="index.html#book" style="padding:8px 16px;font-size:11px">Reserve Machine</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 KRUIZLY Black Label Mobility. Sovereign Mobility Collective.</div>
+      <div>100% Mobile Responsive Obsidian Edition</div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="shared/config.js"></script>
+  <script src="shared/data.js"></script>
+  <script src="shared/api.js"></script>
+  <script src="shared/app.js"></script>
+  <script>
+    function lookupBookingStatus() {
+      const input = document.getElementById("lookupId");
+      const resEl = document.getElementById("lookupResult");
+      if (!input || !resEl) return;
+
+      let code = input.value.trim().toUpperCase();
+      if (!code) {
+        resEl.innerHTML = `<span style="color:var(--danger);font-size:12px">Please enter a valid reference ID.</span>`;
+        return;
+      }
+      if (!code.startsWith("#")) code = "#" + code;
+
+      const bookings = window.luxuryDataMgr.getBookings();
+      const match = bookings.find(b => b.id.toUpperCase() === code.replace("#", "").toUpperCase() || ("#" + b.id).toUpperCase() === code);
+
+      if (match) {
+        const vehicle = window.luxuryDataMgr.getFleetById(match.vehicleId) || { name: match.vehicleName || "Luxury Vehicle" };
+        resEl.innerHTML = `
+          <div style="background:rgba(255,255,255,0.04);border:1px solid var(--line);border-radius:var(--radius-sm);padding:16px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <strong style="color:var(--gold2);font-family:var(--display);font-size:15px">REF: ${match.id}</strong>
+              <span style="background:rgba(53,212,134,0.15);border:1px solid rgba(53,212,134,0.3);color:var(--success);font-size:10px;padding:2px 8px;border-radius:var(--radius-pill);font-weight:700">
+                ${match.status}
+              </span>
+            </div>
+            <div style="font-size:13px;color:var(--cream);font-weight:600">${match.guestName}</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px">${match.vehicleName || vehicle.name} • Hub: ${match.hubCode}</div>
+            <div style="font-size:12px;color:#aaa;margin-top:6px">Pickup: <b>${match.pickupDate}</b> (Days: ${match.days})</div>
+            <div style="font-size:12px;color:var(--gold);margin-top:4px">Chauffeur: ${match.chauffeur ? 'Dedicated White-Glove' : 'Self-Drive'}</div>
+          </div>
+        `;
+      } else {
+        resEl.innerHTML = `
+          <div style="background:rgba(255,95,103,0.08);border:1px solid var(--danger);border-radius:var(--radius-sm);padding:14px;color:#ff999e;font-size:12px">
+            No active reservation found for <strong>${code}</strong>. Please check your reference ID or contact the 24/7 Operations Desk at +91 91671 64547.
+          </div>
+        `;
+      }
+    }
+  </script>
+</body>
+
+</html>

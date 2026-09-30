@@ -1,1 +1,218 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KRUIZLY Black Label — Admin</title><link rel="stylesheet" href="../shared/dashboard.css"></head><body><div class="layout"><aside class="side"><div class="logo"><b>K</b><span>KRUIZLY<small>BLACK LABEL ADMIN</small></span></div><a class="navitem active" href="#">Overview</a><a class="navitem" href="#hubs">Hubs</a><a class="navitem" href="#fleet">Luxury Fleet</a><a class="navitem" href="#bookings">Bookings</a><a class="navitem" href="#revenue">Revenue</a><a class="navitem" href="../index.html">Public Website ↗</a><div class="side-foot">SUPER ADMIN / ADMIN</div></aside><main class="main"><header class="top"><div><h1>Command Centre</h1><p>Black Label network administration</p></div><select class="selector" id="hub"><option>All Hubs</option></select></header><section class="grid kpis"><div class="kpi"><span>Total Revenue</span><strong id="revenue">₹466,213</strong><small>All connected hubs</small></div><div class="kpi"><span>Active Trips</span><strong>14</strong><small>Currently on road</small></div><div class="kpi"><span>Bookings</span><strong>178</strong><small>Network total</small></div><div class="kpi"><span>Occupancy</span><strong>72%</strong><small>Fleet utilization</small></div></section><section class="grid two"><div class="panel"><div class="panel-head"><h2>Fleet performance</h2><span>LIVE VIEW</span></div><table class="table"><thead><tr><th>Fleet</th><th>Bookings</th><th>Revenue</th><th>Status</th></tr></thead><tbody id="fleet-table"></tbody></table></div><div class="panel"><div class="panel-head"><h2>Hub revenue</h2><span>THIS PERIOD</span></div><div id="hub-bars"></div></div></section><section class="panel" style="margin-top:14px" id="bookings"><div class="panel-head"><h2>Booking operations</h2><div class="actions"><button class="action" onclick="addHub()">+ Add Hub</button><button class="action" onclick="addFleet()">+ Add Fleet</button></div></div><table class="table"><thead><tr><th>Booking</th><th>Guest</th><th>Vehicle</th><th>Hub</th><th>Days</th><th>Revenue</th><th>Status</th></tr></thead><tbody id="booking-table"></tbody></table></section></main></div><script src="../shared/config.js"></script><script src="../shared/data.js"></script><script src="../shared/api.js"></script><script src="admin.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KRUIZLY Black Label — Admin Command Centre</title>
+  <link rel="stylesheet" href="../shared/dashboard.css">
+  <link rel="icon" type="image/png" href="../assets/logo.png">
+</head>
+
+<body>
+  <!-- Mobile Sidebar Backdrop -->
+  <div class="side-backdrop" id="sideBackdrop" onclick="toggleSidebar()"></div>
+
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="side" id="sidebar">
+      <div class="logo">
+        <b>K</b>
+        <span>KRUIZLY<small>BLACK LABEL ADMIN</small></span>
+      </div>
+      
+      <a class="navitem active" href="index.html">Overview</a>
+      <a class="navitem" href="#kpis">Network KPIs</a>
+      <a class="navitem" href="#fleet-panel">Fleet Performance</a>
+      <a class="navitem" href="#hub-panel">Hub Allocation</a>
+      <a class="navitem" href="#bookings">Booking Operations</a>
+      
+      <div style="margin-top:auto;padding-top:24px;border-top:1px solid var(--line-subtle)">
+        <a class="navitem" href="../index.html" style="color:var(--gold2)">Public Website ↗</a>
+        <a class="navitem" href="../manager/index.html">Manager Portal ↗</a>
+        <a class="navitem" href="../executive/index.html">Executive Board ↗</a>
+      </div>
+
+      <div class="side-foot">SUPER ADMIN • DISPATCH SECURE</div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <header class="top">
+        <div>
+          <h1>Command Centre</h1>
+          <p>Black Label sovereign network administration & dispatch</p>
+        </div>
+        
+        <div class="top-actions">
+          <button type="button" class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle Navigation">☰</button>
+          <select class="selector" id="hub-filter" onchange="filterAdminByHub(this.value)">
+            <option value="ALL">All Regional Hubs</option>
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+      </header>
+
+      <!-- KPIs Grid -->
+      <section class="grid kpis" id="kpis">
+        <div class="kpi">
+          <span>Total Network Revenue</span>
+          <strong id="kpi-revenue">₹466,213</strong>
+          <small>All connected regional hubs</small>
+        </div>
+        <div class="kpi">
+          <span>Active Trips</span>
+          <strong id="kpi-active">14</strong>
+          <small>Currently on road</small>
+        </div>
+        <div class="kpi">
+          <span>Total Bookings</span>
+          <strong id="kpi-bookings">178</strong>
+          <small>Network operations</small>
+        </div>
+        <div class="kpi">
+          <span>Fleet Occupancy</span>
+          <strong id="kpi-occupancy">78%</strong>
+          <small>High-demand utilization</small>
+        </div>
+      </section>
+
+      <!-- Fleet Performance & Hub Revenue Panels -->
+      <section class="grid two">
+        <div class="panel" id="fleet-panel">
+          <div class="panel-head">
+            <h2>Fleet Performance</h2>
+            <span>LIVE VIEW</span>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Machine</th>
+                  <th>Category</th>
+                  <th>Trips</th>
+                  <th>Daily Rate</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="fleet-table">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel" id="hub-panel">
+          <div class="panel-head">
+            <h2>Regional Hub Revenue</h2>
+            <span>THIS PERIOD</span>
+          </div>
+          <div id="hub-bars">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Booking Operations Panel -->
+      <section class="panel" style="margin-top:20px" id="bookings">
+        <div class="panel-head">
+          <div>
+            <h2>Booking Operations & Dispatch</h2>
+            <span style="font-size:12px;color:var(--muted)">Real-time guest reservations synchronized across all 5 hubs</span>
+          </div>
+          <div class="actions">
+            <button type="button" class="action" onclick="openAddHubModal()">+ Add Hub</button>
+            <button type="button" class="action" onclick="openAddFleetModal()">+ Add Machine</button>
+          </div>
+        </div>
+
+        <div style="overflow-x:auto">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Booking ID</th>
+                <th>Guest</th>
+                <th>Machine</th>
+                <th>Hub</th>
+                <th>Duration</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="booking-table">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ADD HUB MODAL -->
+  <div id="addHubModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>Commission New Regional Hub</h3>
+        <button type="button" class="modal-close" onclick="closeDashboardModals()">✕</button>
+      </div>
+      <form onsubmit="handleCreateHub(event)">
+        <div class="form-group">
+          <label for="hubName">Hub Name</label>
+          <input id="hubName" class="form-control" required placeholder="e.g. Hyderabad Executive Hub">
+        </div>
+        <div class="form-group">
+          <label for="hubCode">IATA / Hub Code</label>
+          <input id="hubCode" class="form-control" required placeholder="e.g. HYD" maxlength="4">
+        </div>
+        <div class="form-group">
+          <label for="hubCity">Staging Terminal Address</label>
+          <input id="hubCity" class="form-control" required placeholder="e.g. Rajiv Gandhi Intl Airport (GA Lounge)">
+        </div>
+        <button type="submit" class="btn gold full" style="margin-top:10px">Commission Hub</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ADD FLEET MODAL -->
+  <div id="addFleetModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>Induct New Sovereign Machine</h3>
+        <button type="button" class="modal-close" onclick="closeDashboardModals()">✕</button>
+      </div>
+      <form onsubmit="handleCreateFleet(event)">
+        <div class="form-group">
+          <label for="fleetName">Vehicle Model Name</label>
+          <input id="fleetName" class="form-control" required placeholder="e.g. Bentley Flying Spur Mulliner">
+        </div>
+        <div class="form-group">
+          <label for="fleetCategory">Discipline Category</label>
+          <select id="fleetCategory" class="form-control">
+            <option value="sedan">Ultra Luxury Sedan</option>
+            <option value="lounge">Executive VIP Lounge</option>
+            <option value="suv">Flagship SUV</option>
+            <option value="coach">VIP Group Mobility</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="fleetPrice">Daily Tariff (INR)</label>
+          <input id="fleetPrice" type="number" class="form-control" required placeholder="35000">
+        </div>
+        <div class="form-group">
+          <label for="fleetTagline">Tagline / Mission</label>
+          <input id="fleetTagline" class="form-control" placeholder="Pinnacle British Grand Tourer">
+        </div>
+        <button type="submit" class="btn gold full" style="margin-top:10px">Induct Machine into Active Stable</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="../shared/config.js"></script>
+  <script src="../shared/data.js"></script>
+  <script src="../shared/api.js"></script>
+  <script src="admin.js"></script>
+</body>
+
+</html>

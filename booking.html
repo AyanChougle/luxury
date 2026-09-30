@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reserve a Machine — KRUIZLY Black Label</title>
+  <meta name="description" content="Reserve sovereign chauffeur mobility with KRUIZLY Black Label. Real-time fare calculation, instant VIP reservation pass, and 24/7 concierge dispatch.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/luxury.css">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <style>
+    .booking-page-hero {
+      padding: 100px 7vw 40px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 15%, #18150f, #050505 75%);
+      border-bottom: 1px solid var(--line-subtle);
+    }
+    .booking-page-hero h1 {
+      font-size: clamp(38px, 5.5vw, 68px);
+      margin: 14px 0;
+    }
+    .booking-page-container {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 60px 5vw 100px;
+    }
+    .promo-container {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .promo-container input {
+      flex: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .addons-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--line-subtle);
+      border-radius: var(--radius-sm);
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+    .addon-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 13px;
+    }
+    .addon-item:last-child {
+      border-bottom: none;
+    }
+    .addon-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--gold);
+    }
+  </style>
+</head>
+
+<body class="site">
+  <!-- NAVIGATION -->
+  <header class="nav">
+    <a class="brand" href="index.html">
+      <span class="mark">K</span>
+      <span>KRUIZLY <small>BLACK LABEL</small></span>
+    </a>
+    
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="fleet.html">The Fleet</a>
+      <a href="services.html">VIP Protocols</a>
+      <a href="booking.html" style="color:var(--gold2)">Reserve</a>
+      <a href="bookings.html">My Bookings</a>
+      <a href="contact.html">Concierge Desk</a>
+    </nav>
+    
+    <a class="nav-cta" href="tel:+919167164547">Hotline: +91 91671 64547</a>
+    <button class="menu-btn" aria-label="Toggle Navigation Drawer">☰</button>
+  </header>
+
+  <!-- MOBILE SLIDE-OUT DRAWER -->
+  <div class="mobile-drawer">
+    <a href="index.html">Home Overview <span>01 →</span></a>
+    <a href="fleet.html">The Fleet Collection <span>02 →</span></a>
+    <a href="services.html">VIP Protocols & Tariffs <span>03 →</span></a>
+    <a href="booking.html" class="gold-text">Reserve a Machine <span>★ Current</span></a>
+    <a href="bookings.html">My VIP Bookings & Passes <span>05 →</span></a>
+    <a href="contact.html">24/7 Operations Desk <span>06 →</span></a>
+    <a href="admin/index.html" style="font-size:12px;color:var(--dim)">Staff Command Centre ↗</a>
+  </div>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="booking-page-hero">
+      <p class="eyebrow">PRIVATE MOBILITY RESERVATION CONSOLE</p>
+      <h1>Configure Your<br><em>Sovereign Journey.</em></h1>
+      <p style="color:var(--muted);max-width:600px;margin:0 auto;font-size:15px">
+        Select your vehicle, choose your regional hub, and reserve instantly with real-time pricing and verified dispatch.
+      </p>
+    </section>
+
+    <!-- FORM SECTION -->
+    <div class="booking-page-container">
+      <div class="booking-form-box">
+        <form onsubmit="requestRide(event)">
+          <!-- Section 1: Guest Information -->
+          <div style="margin-bottom:28px">
+            <h3 style="font-family:var(--display);color:var(--gold2);font-size:20px;margin-bottom:14px;border-bottom:1px solid var(--line-subtle);padding-bottom:8px">
+              01 / Principal Information
+            </h3>
+            <div class="form-row">
+              <div>
+                <label for="guestName">Principal / Guest Name *</label>
+                <input id="guestName" name="guestName" required placeholder="Lord / Amb. / Dr. / Full Name">
+              </div>
+              <div>
+                <label for="guestPhone">Direct Mobile / WhatsApp *</label>
+                <input id="guestPhone" name="guestPhone" type="tel" required placeholder="+91 98000 00000">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="guestEmail">Executive Email (for VIP Booking Pass)</label>
+                <input id="guestEmail" name="guestEmail" type="email" placeholder="principal@enterprise.com">
+              </div>
+              <div>
+                <label for="booking-hub">Regional Operations Hub *</label>
+                <select id="booking-hub" name="hubCode">
+                  <!-- Populated dynamically -->
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Machine & Itinerary -->
+          <div style="margin-bottom:28px">
+            <h3 style="font-family:var(--display);color:var(--gold2);font-size:20px;margin-bottom:14px;border-bottom:1px solid var(--line-subtle);padding-bottom:8px">
+              02 / Fleet Machine & Itinerary
+            </h3>
+            <div class="form-row">
+              <div>
+                <label for="booking-fleet">Select Machine *</label>
+                <select id="booking-fleet" name="vehicleId">
+                  <!-- Populated dynamically -->
+                </select>
+              </div>
+              <div>
+                <label for="pickupCity">Pickup Address / Airport Terminal *</label>
+                <input id="pickupCity" name="pickupCity" required placeholder="e.g. BOM Terminal 2 / Taj Mahal Palace, Colaba">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="booking-pickup">Pickup Date *</label>
+                <input id="booking-pickup" type="date" required>
+              </div>
+              <div>
+                <label for="booking-return">Return Date *</label>
+                <input id="booking-return" type="date" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Protocol & Chauffeur -->
+          <div style="margin-bottom:28px">
+            <h3 style="font-family:var(--display);color:var(--gold2);font-size:20px;margin-bottom:14px;border-bottom:1px solid var(--line-subtle);padding-bottom:8px">
+              03 / Mobility Protocol
+            </h3>
+            <label class="chauffeur-toggle">
+              <div>
+                <strong style="display:block;color:var(--cream);font-size:14px">Include Dedicated White-Glove Chauffeur</strong>
+                <small style="color:var(--muted);font-size:11px">Recommended for executive itineraries. Includes uniforms, luggage porterage, and route security.</small>
+              </div>
+              <input type="checkbox" id="booking-chauffeur" checked>
+            </label>
+
+            <!-- Bespoke In-Cabin Amenities -->
+            <div class="addons-box">
+              <span style="font-size:11px;color:var(--gold);letter-spacing:0.12em;font-weight:700;display:block;margin-bottom:8px;text-transform:uppercase">VIP Complimentary In-Cabin Curations</span>
+              <div class="addon-item">
+                <span>Sanitized Cabin with N95 Air Purification & Chilled Spring Water</span>
+                <span style="color:var(--success);font-size:11px;font-weight:700">INCLUDED</span>
+              </div>
+              <div class="addon-item">
+                <span>Dual Fast iOS & USB-C High-Wattage Charging Suite + High-Speed Wi-Fi</span>
+                <span style="color:var(--success);font-size:11px;font-weight:700">INCLUDED</span>
+              </div>
+              <div class="addon-item">
+                <span>Automated Real-Time Flight Radar Tracking & Delay Buffer</span>
+                <span style="color:var(--success);font-size:11px;font-weight:700">INCLUDED</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Privilege Code & Live Fare -->
+          <div style="margin-bottom:28px">
+            <h3 style="font-family:var(--display);color:var(--gold2);font-size:20px;margin-bottom:14px;border-bottom:1px solid var(--line-subtle);padding-bottom:8px">
+              04 / Privilege Tariff & Calculation
+            </h3>
+            <label for="promo-input">VIP Privilege / Concierge Code</label>
+            <div class="promo-container">
+              <input id="promo-input" placeholder="e.g. VIPLUXURY (15% off) or ROYAL20">
+              <button type="button" class="btn ghost" onclick="applyPromoCode()">Apply Code</button>
+            </div>
+            <div id="promo-status" style="font-size:12px;margin-bottom:14px;min-height:16px"></div>
+
+            <!-- Live Fare Receipt Box -->
+            <div class="fare-estimate-box">
+              <div class="fare-row">
+                <span>Estimated Duration:</span>
+                <strong id="est-days">1 day</strong>
+              </div>
+              <div class="fare-row">
+                <span>Vehicle Base Rate:</span>
+                <strong id="est-base">₹25,000</strong>
+              </div>
+              <div class="fare-row">
+                <span>White-Glove Chauffeur Protocol:</span>
+                <strong id="est-chauffeur">₹2,500</strong>
+              </div>
+              <div class="fare-row" id="est-discount-row" style="display:none;color:var(--gold2)">
+                <span>VIP Privilege Discount:</span>
+                <strong id="est-discount">-₹0</strong>
+              </div>
+              <div class="fare-row">
+                <span>GST & State Regulatory Cess (18%):</span>
+                <strong id="est-gst">₹4,950</strong>
+              </div>
+              <div class="fare-row total">
+                <span>Total Estimated Investment:</span>
+                <strong id="est-total">₹32,450</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Special Requests -->
+          <div style="margin-bottom:24px">
+            <label for="guestNotes">Special Instructions & Flight Radar Details</label>
+            <textarea id="guestNotes" name="guestNotes" rows="3" placeholder="e.g. Flight EK-504 arriving BOM T2 at 18:40. Guest requires Hindi/English speaking chauffeur, luggage assistance for 3 large suitcases."></textarea>
+          </div>
+
+          <button type="submit" class="btn gold full" style="font-size:14px;padding:18px">
+            Confirm & Generate VIP Reservation Pass →
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-col">
+        <div class="brand" style="margin-bottom:16px">
+          <span class="mark">K</span>
+          <span>KRUIZLY <small>BLACK LABEL</small></span>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7">
+          Sovereign mobility collective. Ultra-luxury fleet operations across Mumbai, Delhi NCR, Surat, Bengaluru, and Goa.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home Overview</a></li>
+          <li><a href="fleet.html">The Fleet Collection</a></li>
+          <li><a href="services.html">VIP Protocols & Services</a></li>
+          <li><a href="bookings.html">My Bookings</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Regional Hubs</h4>
+        <ul>
+          <li>Mumbai BOM Terminal 2 & BKC</li>
+          <li>Delhi NCR DEL Aerocity Enclave</li>
+          <li>Surat STV Dumas Road</li>
+          <li>Bengaluru BLR UB City & Airport</li>
+          <li>Goa GOI Dabolim & Mopa</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Direct Concierge</h4>
+        <p style="font-size:13px;color:var(--cream);margin-bottom:6px">Call: +91 91671 64547</p>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:14px">WhatsApp Dispatch Available 24/7</p>
+        <a class="btn gold" href="bookings.html" style="padding:8px 16px;font-size:11px">Track Active Bookings</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 KRUIZLY Black Label Mobility. Sovereign Mobility Collective.</div>
+      <div>100% Mobile Responsive Obsidian Edition</div>
+    </div>
+  </footer>
+
+  <!-- VIP BOOKING CONFIRMATION PASS MODAL -->
+  <div id="passModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>VIP Reservation Pass</h3>
+        <button type="button" class="modal-close" onclick="closeModals()" aria-label="Close Modal">✕</button>
+      </div>
+      <div id="passModalContent"></div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="shared/config.js"></script>
+  <script src="shared/data.js"></script>
+  <script src="shared/api.js"></script>
+  <script src="shared/app.js"></script>
+</body>
+
+</html>

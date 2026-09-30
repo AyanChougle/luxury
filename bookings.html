@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My VIP Itineraries & Passes — KRUIZLY Black Label</title>
+  <meta name="description" content="View and manage your KRUIZLY Black Label ultra-luxury mobility reservations. Access digital VIP Passes, trip timeline, and 24/7 concierge WhatsApp dispatch.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/luxury.css">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <style>
+    .bookings-hero {
+      padding: 100px 7vw 40px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 15%, #18150f, #050505 75%);
+      border-bottom: 1px solid var(--line-subtle);
+    }
+    .bookings-hero h1 {
+      font-size: clamp(38px, 5.5vw, 68px);
+      margin: 14px 0;
+    }
+    .bookings-container {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 50px 5vw 100px;
+    }
+    .filter-pills-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .filter-pill-btn {
+      background: var(--surface);
+      border: 1px solid var(--line-subtle);
+      color: var(--muted);
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .filter-pill-btn:hover, .filter-pill-btn.active {
+      background: rgba(199, 163, 90, 0.15);
+      border-color: var(--gold);
+      color: var(--gold2);
+    }
+    @media (max-width: 768px) {
+      .booking-card {
+        grid-template-columns: 1fr !important;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+
+<body class="site">
+  <!-- NAVIGATION -->
+  <header class="nav">
+    <a class="brand" href="index.html">
+      <span class="mark">K</span>
+      <span>KRUIZLY <small>BLACK LABEL</small></span>
+    </a>
+    
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="fleet.html">The Fleet</a>
+      <a href="services.html">VIP Protocols</a>
+      <a href="booking.html">Reserve</a>
+      <a href="bookings.html" style="color:var(--gold2)">My Bookings</a>
+      <a href="contact.html">Concierge Desk</a>
+    </nav>
+    
+    <a class="nav-cta" href="booking.html">Reserve Machine</a>
+    <button class="menu-btn" aria-label="Toggle Navigation Drawer">☰</button>
+  </header>
+
+  <!-- MOBILE SLIDE-OUT DRAWER -->
+  <div class="mobile-drawer">
+    <a href="index.html">Home Overview <span>01 →</span></a>
+    <a href="fleet.html">The Fleet Collection <span>02 →</span></a>
+    <a href="services.html">VIP Protocols & Tariffs <span>03 →</span></a>
+    <a href="booking.html">Reserve a Machine <span>04 →</span></a>
+    <a href="bookings.html" class="gold-text">My VIP Bookings & Passes <span>★ Current</span></a>
+    <a href="contact.html">24/7 Operations Desk <span>06 →</span></a>
+    <a href="admin/index.html" style="font-size:12px;color:var(--dim)">Staff Command Centre ↗</a>
+  </div>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="bookings-hero">
+      <p class="eyebrow">SOVEREIGN GUEST PASSES & TIMELINE</p>
+      <h1>My VIP Itineraries<br><em>& Active Passes.</em></h1>
+      <p style="color:var(--muted);max-width:600px;margin:0 auto;font-size:15px">
+        Access your confirmed machine allocations, review chauffeur dispatch credentials, and contact your 24/7 mobility coordinator.
+      </p>
+    </section>
+
+    <!-- CONTENT CONTAINER -->
+    <div class="bookings-container">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:14px">
+        <div>
+          <h2 style="font-family:var(--display);font-size:24px;color:var(--cream)">Active Guest Reservations</h2>
+          <span style="font-size:12px;color:var(--muted)">Saved locally with full state persistence</span>
+        </div>
+        <a href="booking.html" class="btn gold" style="font-size:12px;padding:10px 18px">+ Schedule New Machine</a>
+      </div>
+
+      <!-- Filter Pills -->
+      <div class="filter-pills-bar">
+        <button type="button" class="filter-pill-btn active" onclick="filterBookingsDisplay('ALL', this)">All Reservations</button>
+        <button type="button" class="filter-pill-btn" onclick="filterBookingsDisplay('CONFIRMED', this)">Confirmed Passes</button>
+        <button type="button" class="filter-pill-btn" onclick="filterBookingsDisplay('ON_TRIP', this)">On Trip / Active</button>
+        <button type="button" class="filter-pill-btn" onclick="filterBookingsDisplay('COMPLETED', this)">Completed</button>
+      </div>
+
+      <!-- Dynamic Bookings Container -->
+      <div id="bookings-list">
+        <!-- Rendered dynamically by shared/app.js -->
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-col">
+        <div class="brand" style="margin-bottom:16px">
+          <span class="mark">K</span>
+          <span>KRUIZLY <small>BLACK LABEL</small></span>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7">
+          Sovereign mobility collective. Ultra-luxury fleet operations across Mumbai, Delhi NCR, Surat, Bengaluru, and Goa.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home Overview</a></li>
+          <li><a href="fleet.html">The Fleet Collection</a></li>
+          <li><a href="services.html">VIP Protocols</a></li>
+          <li><a href="booking.html">Reserve Machine</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Operations Hotlines</h4>
+        <ul>
+          <li>Mumbai BOM: +91 91671 64547</li>
+          <li>Delhi DEL: +91 98110 54321</li>
+          <li>Surat STV: +91 98980 98765</li>
+          <li>Bengaluru BLR: +91 98450 11223</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Private Concierge</h4>
+        <p style="font-size:13px;color:var(--cream);margin-bottom:6px">Call: +91 91671 64547</p>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:14px">WhatsApp Dispatch Available 24/7</p>
+        <a class="btn gold" href="https://wa.me/919167164547" target="_blank" rel="noopener" style="padding:8px 16px;font-size:11px">WhatsApp Concierge Desk</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 KRUIZLY Black Label Mobility. Sovereign Mobility Collective.</div>
+      <div>100% Mobile Responsive Obsidian Edition</div>
+    </div>
+  </footer>
+
+  <!-- VIP BOOKING CONFIRMATION PASS MODAL -->
+  <div id="passModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>VIP Reservation Pass</h3>
+        <button type="button" class="modal-close" onclick="closeModals()" aria-label="Close Modal">✕</button>
+      </div>
+      <div id="passModalContent"></div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="shared/config.js"></script>
+  <script src="shared/data.js"></script>
+  <script src="shared/api.js"></script>
+  <script src="shared/app.js"></script>
+  <script>
+    function filterBookingsDisplay(status, btn) {
+      document.querySelectorAll(".filter-pill-btn").forEach(b => b.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+
+      const container = document.getElementById("bookings-list");
+      if (!container || !window.luxuryDataMgr) return;
+
+      const money = n => "₹" + Number(n || 0).toLocaleString("en-IN");
+      let bookings = window.luxuryDataMgr.getBookings();
+
+      if (status !== "ALL") {
+        bookings = bookings.filter(b => b.status === status);
+      }
+
+      if (bookings.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center;padding:50px 20px;background:var(--surface);border-radius:var(--radius-md);border:1px solid var(--line-subtle)">
+            <p style="color:var(--gold2);font-family:var(--display);font-size:20px;margin-bottom:6px">No reservations under "${status}"</p>
+            <p style="color:var(--muted);font-size:13px">All status changes are synchronized automatically with local storage.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = bookings.map(b => {
+        const vehicle = window.luxuryDataMgr.getFleetById(b.vehicleId);
+        const isConfirmed = b.status === "CONFIRMED";
+        const statusBg = isConfirmed 
+          ? 'background:rgba(53,212,134,0.15);color:var(--success);border-color:rgba(53,212,134,0.3)'
+          : (b.status === 'COMPLETED' ? 'background:rgba(79,215,255,0.15);color:var(--info);border-color:rgba(79,215,255,0.3)' : 'background:rgba(255,95,103,0.15);color:var(--danger);border-color:rgba(255,95,103,0.3)');
+
+        return `
+          <div class="booking-card" style="background:var(--surface);border:1px solid var(--line-subtle);border-radius:var(--radius-md);padding:24px;margin-bottom:20px;display:grid;grid-template-columns:1fr 180px 200px;gap:24px;align-items:center">
+            <div>
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+                <span style="font-size:12px;font-family:var(--display);color:var(--gold2);font-weight:700">#${b.id}</span>
+                <span style="padding:2px 10px;border-radius:var(--radius-pill);font-size:10px;font-weight:700;border:1px solid;${statusBg}">${b.status}</span>
+                <span style="font-size:11px;color:var(--muted)">Hub: ${b.hubCode}</span>
+              </div>
+              <h3 style="font-family:var(--display);font-size:20px;color:var(--cream);margin-bottom:6px">${b.vehicleName}</h3>
+              <p style="font-size:13px;color:var(--muted);margin-bottom:4px">Guest: <b>${b.guestName}</b> (${b.guestPhone || ''})</p>
+              <p style="font-size:12px;color:#aaa">Pickup: ${b.pickupDate} • Return: ${b.returnDate} (${b.days || 1} Days)</p>
+            </div>
+
+            <div style="text-align:center">
+              <img src="${vehicle ? vehicle.image : 'assets/maybach.png'}" style="max-height:80px;width:100%;object-fit:contain" alt="${b.vehicleName}">
+              <div style="font-size:18px;font-family:var(--display);color:var(--gold2);margin-top:6px">${money(b.total)}</div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <button type="button" class="btn gold" style="font-size:11px;padding:8px" onclick="showBookingConfirmationPass(window.luxuryDataMgr.getBookingById('${b.id}'))">
+                View VIP Pass
+              </button>
+              <a href="https://wa.me/919167164547?text=${encodeURIComponent(`Hello KRUIZLY Concierge, regarding my reservation #${b.id} for the ${b.vehicleName}.`)}" target="_blank" rel="noopener" class="btn ghost" style="font-size:11px;padding:8px;text-align:center">
+                WhatsApp Desk
+              </a>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+  </script>
+</body>
+
+</html>

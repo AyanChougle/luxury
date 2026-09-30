@@ -1,1 +1,241 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KRUIZLY — Manager</title><link rel="stylesheet" href="../shared/dashboard.css"></head><body><div class="layout"><aside class="side"><div class="logo"><b>K</b><span>KRUIZLY<small>BLACK LABEL MANAGER</small></span></div><a class="navitem active">Overview</a><a class="navitem">Fleet Performance</a><a class="navitem">Booking Analytics</a><a class="navitem">Revenue</a><a class="navitem" href="../index.html">Public Website ↗</a><div class="side-foot">MANAGER / SELECTED HUB</div></aside><main class="main"><header class="top"><div><h1>Manager Dashboard</h1><p>Operational performance by selected hub</p></div><select class="selector"><option>Mumbai Hub</option><option>Delhi NCR Hub</option><option>Surat Hub</option></select></header><section class="grid kpis"><div class="kpi"><span>Total Revenue</span><strong>₹466,213</strong><small>Hub performance</small></div><div class="kpi"><span>Active Trips</span><strong>14</strong><small>On road</small></div><div class="kpi"><span>Complete Trips</span><strong>126</strong><small>Period total</small></div><div class="kpi"><span>Revenue This Month</span><strong>₹143,816</strong><small>Current month</small></div><div class="kpi"><span>Total Booking</span><strong>178</strong><small>Confirmed + completed</small></div><div class="kpi"><span>Occupancy Avg</span><strong>72%</strong><small>Fleet utilization</small></div><div class="kpi"><span>Avg Booking Value</span><strong>₹7,912</strong><small>Per booking</small></div><div class="kpi"><span>Fleet Revenue %</span><strong>100%</strong><small>Hub allocation</small></div></section><section class="grid two"><div class="panel"><div class="panel-head"><h2>Fleet Performance</h2><span>DAY / WEEK / MONTH / OVERALL</span></div><table class="table"><thead><tr><th>Fleet</th><th>Bookings</th><th>Days</th><th>Revenue</th><th>Avg</th></tr></thead><tbody><tr><td class="gold-text">Maybach</td><td>8</td><td>18</td><td>₹92,000</td><td>₹11,500</td></tr><tr><td class="gold-text">Vellfire</td><td>15</td><td>31</td><td>₹78,000</td><td>₹5,200</td></tr><tr><td class="gold-text">S-Class</td><td>7</td><td>14</td><td>₹63,000</td><td>₹9,000</td></tr><tr><td class="gold-text">BMW 7</td><td>6</td><td>12</td><td>₹48,000</td><td>₹8,000</td></tr></tbody></table></div><div class="panel"><div class="panel-head"><h2>Sales mix</h2><span>MONTH</span></div><div class="notice">Maybach and Vellfire are tracked separately by the selected hub. Fleet pricing should be supplied by the hub-specific configuration.</div><div class="bar"><i style="width:82%"></i></div><p style="color:#777">Luxury fleet utilization <b class="gold-text">82%</b></p><div class="bar"><i style="width:68%"></i></div><p style="color:#777">Booking conversion <b class="gold-text">68%</b></p></div></section></main></div></body></html>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KRUIZLY Black Label — Hub Operations Manager</title>
+  <link rel="stylesheet" href="../shared/dashboard.css">
+  <link rel="icon" type="image/png" href="../assets/logo.png">
+</head>
+
+<body>
+  <!-- Mobile Sidebar Backdrop -->
+  <div class="side-backdrop" id="sideBackdrop" onclick="toggleSidebar()"></div>
+
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="side" id="sidebar">
+      <div class="logo">
+        <b>K</b>
+        <span>KRUIZLY<small>BLACK LABEL MANAGER</small></span>
+      </div>
+
+      <a class="navitem active" href="index.html">Overview</a>
+      <a class="navitem" href="#kpis">Hub KPIs</a>
+      <a class="navitem" href="#performance">Fleet Performance</a>
+      <a class="navitem" href="#sales-mix">Sales Mix</a>
+      
+      <div style="margin-top:auto;padding-top:24px;border-top:1px solid var(--line-subtle)">
+        <a class="navitem" href="../index.html" style="color:var(--gold2)">Public Website ↗</a>
+        <a class="navitem" href="../admin/index.html">Admin Command ↗</a>
+        <a class="navitem" href="../executive/index.html">Executive Board ↗</a>
+      </div>
+
+      <div class="side-foot">OPERATIONS / REGIONAL DISPATCH</div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <header class="top">
+        <div>
+          <h1>Manager Dashboard</h1>
+          <p>Operational performance, fleet availability & hub allocation</p>
+        </div>
+
+        <div class="top-actions">
+          <button type="button" class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle Navigation">☰</button>
+          <select class="selector" id="hub-select" onchange="switchHub(this.value)">
+            <option value="BOM">Mumbai Hub (BOM)</option>
+            <option value="DEL">Delhi NCR Hub (DEL)</option>
+            <option value="STV">Surat Hub (STV)</option>
+            <option value="BLR">Bengaluru Hub (BLR)</option>
+            <option value="GOI">Goa Coastal Hub (GOI)</option>
+          </select>
+        </div>
+      </header>
+
+      <!-- KPI Grid -->
+      <section class="grid kpis" id="kpis">
+        <div class="kpi">
+          <span>Hub Gross Revenue</span>
+          <strong id="hub-revenue">₹182,000</strong>
+          <small>Current reporting cycle</small>
+        </div>
+        <div class="kpi">
+          <span>Active Trips on Road</span>
+          <strong>6</strong>
+          <small>Dedicated chauffeurs assigned</small>
+        </div>
+        <div class="kpi">
+          <span>Completed Trips</span>
+          <strong>48</strong>
+          <small>Period total</small>
+        </div>
+        <div class="kpi">
+          <span>Revenue This Month</span>
+          <strong>₹74,200</strong>
+          <small>Monthly forecast pace</small>
+        </div>
+        <div class="kpi">
+          <span>Hub Bookings</span>
+          <strong>61</strong>
+          <small>Confirmed reservations</small>
+        </div>
+        <div class="kpi">
+          <span>Fleet Occupancy</span>
+          <strong>84%</strong>
+          <small>Peak weekend utilization</small>
+        </div>
+        <div class="kpi">
+          <span>Avg Booking Value</span>
+          <strong>₹28,500</strong>
+          <small>Per executive trip</small>
+        </div>
+        <div class="kpi">
+          <span>SLA Adherence</span>
+          <strong style="color:var(--success)">99.4%</strong>
+          <small>Tarmac & doorstep on-time</small>
+        </div>
+      </section>
+
+      <!-- Performance & Sales Mix Panels -->
+      <section class="grid two">
+        <div class="panel" id="performance">
+          <div class="panel-head">
+            <h2>Fleet Operational Performance</h2>
+            <span>SELECTED HUB</span>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Machine</th>
+                  <th>Trips</th>
+                  <th>Days On Road</th>
+                  <th>Revenue</th>
+                  <th>Utilization</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="gold-text">Mercedes-Maybach</td>
+                  <td>12</td>
+                  <td>28</td>
+                  <td>₹124,000</td>
+                  <td><span class="status badge-success">92%</span></td>
+                </tr>
+                <tr>
+                  <td class="gold-text">Toyota Vellfire Lounge</td>
+                  <td>18</td>
+                  <td>36</td>
+                  <td>₹96,000</td>
+                  <td><span class="status badge-success">88%</span></td>
+                </tr>
+                <tr>
+                  <td class="gold-text">MG M9 EV Sovereign</td>
+                  <td>11</td>
+                  <td>22</td>
+                  <td>₹58,000</td>
+                  <td><span class="status badge-success">85%</span></td>
+                </tr>
+                <tr>
+                  <td class="gold-text">Mercedes-Benz S-Class</td>
+                  <td>14</td>
+                  <td>26</td>
+                  <td>₹76,000</td>
+                  <td><span class="status badge-success">80%</span></td>
+                </tr>
+                <tr>
+                  <td class="gold-text">BMW 7 Series</td>
+                  <td>9</td>
+                  <td>18</td>
+                  <td>₹54,000</td>
+                  <td><span class="status badge-warning">72%</span></td>
+                </tr>
+                <tr>
+                  <td class="gold-text">Range Rover Autobiography</td>
+                  <td>10</td>
+                  <td>24</td>
+                  <td>₹72,000</td>
+                  <td><span class="status badge-success">86%</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel" id="sales-mix">
+          <div class="panel-head">
+            <h2>Hub Utilization & Conversion</h2>
+            <span>MONTHLY HEALTH</span>
+          </div>
+
+          <div class="notice">
+            Maybach S-Class and Toyota Vellfire Lounge continue to hold highest demand across corporate C-suite and airport tarmac corridors.
+          </div>
+
+          <div style="margin-bottom:16px">
+            <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px">
+              <span>Ultra-Luxury Sedan Utilization</span>
+              <b class="gold-text">88%</b>
+            </div>
+            <div class="bar"><i style="width:88%"></i></div>
+          </div>
+
+          <div style="margin-bottom:16px">
+            <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px">
+              <span>VIP Executive Lounge MPV Utilization</span>
+              <b class="gold-text">92%</b>
+            </div>
+            <div class="bar"><i style="width:92%"></i></div>
+          </div>
+
+          <div style="margin-bottom:16px">
+            <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px">
+              <span>Direct Chauffeur Attach Rate</span>
+              <b class="gold-text">96%</b>
+            </div>
+            <div class="bar"><i style="width:96%"></i></div>
+          </div>
+
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px">
+              <span>Customer Booking Conversion</span>
+              <b class="gold-text">74%</b>
+            </div>
+            <div class="bar"><i style="width:74%"></i></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="../shared/config.js"></script>
+  <script src="../shared/data.js"></script>
+  <script>
+    function toggleSidebar() {
+      const side = document.getElementById("sidebar");
+      const backdrop = document.getElementById("sideBackdrop");
+      if (side) side.classList.toggle("active");
+      if (backdrop) backdrop.classList.toggle("active");
+    }
+
+    function switchHub(hubCode) {
+      const hubData = {
+        BOM: "₹182,000",
+        DEL: "₹156,000",
+        STV: "₹128,213",
+        BLR: "₹114,000",
+        GOI: "₹98,500"
+      };
+      const revEl = document.getElementById("hub-revenue");
+      if (revEl && hubData[hubCode]) {
+        revEl.textContent = hubData[hubCode];
+      }
+    }
+  </script>
+</body>
+
+</html>
