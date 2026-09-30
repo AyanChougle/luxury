@@ -107,6 +107,40 @@ const LUXURY_FLEET_DATA = [
     ]
   },
   {
+    id: "CARNIVAL",
+    name: "Kia Carnival Limousine Plus",
+    brand: "Kia Luxury",
+    model: "Carnival Limousine Plus VIP",
+    type: "Executive VIP Lounge",
+    category: "lounge",
+    categoryLabel: "Executive VIP Lounge",
+    seats: 7,
+    bags: 6,
+    price: 15000,
+    priceHour: 750,
+    chauffeurRate: 2000,
+    deposit: 10000,
+    transmission: "8-Speed Sports Automatic",
+    fuel: "2.2L Smartstream CRDi Diesel",
+    status: "Available",
+    image: "assets/carnival.png",
+    tagline: "First-Class Limousine Suite on Wheels",
+    specs: {
+      power: "193 hp / 441 Nm",
+      engine: "2.2L Smartstream Turbo Diesel",
+      sound: "Bose 12-Speaker Premium Sound",
+      acceleration: "Smooth Torque-Rich Highway Glide"
+    },
+    features: [
+      "Second-Row Powered Relaxation Ottoman Seats with Leg Support",
+      "Dual Electric Panoramic Sunroofs with Independent Blinds",
+      "Bose 12-Speaker Centerpoint Audio Suite",
+      "One-Touch Smart Power Sliding Doors & Smart Tailgate",
+      "Tri-Zone Independent Climate Control with Roof Air Vents",
+      "Executive Sunshade Blinds & 64-Color Ambient Mood Lighting"
+    ]
+  },
+  {
     id: "M9",
     name: "MG M9 EV Sovereign Lounge",
     brand: "MG Luxury",
@@ -261,7 +295,7 @@ const INITIAL_BOOKINGS = [
 // Persistent state management
 class LuxuryDataManager {
   constructor() {
-    this.storageKey = "kruizly_black_label_state_v5";
+    this.storageKey = "kruizly_black_label_state_v6";
     this.activeHubKey = "kruizly_active_hub";
     this.init();
   }
