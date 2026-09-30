@@ -5,6 +5,40 @@
 
 const LUXURY_FLEET_DATA = [
   {
+    id: "GHOST",
+    name: "Rolls-Royce Ghost Series II",
+    brand: "Rolls-Royce",
+    model: "Ghost Series II Extended",
+    type: "Ultra Luxury Pinnacle",
+    category: "sedan",
+    categoryLabel: "Ultra Luxury Pinnacle",
+    seats: 4,
+    bags: 3,
+    price: 65000,
+    priceHour: 3200,
+    chauffeurRate: 5000,
+    deposit: 35000,
+    transmission: "Satellite-Aided 8-Speed",
+    fuel: "6.75L Twin-Turbo V12",
+    status: "Available",
+    image: "assets/ghost.png",
+    tagline: "Post-Opulent Perfection and Peerless Prestige",
+    specs: {
+      power: "563 hp",
+      engine: "6.75L Twin-Turbo V12",
+      sound: "Bespoke Rolls-Royce 1300W Studio Audio",
+      acceleration: "0-100 km/h in 4.7s Magic Carpet Ride"
+    },
+    features: [
+      "Shooting Star Starlight Headliner with hand-woven fiber optics",
+      "Planar Suspension System with Flagbearer Road-Reading Cameras",
+      "Effortless Power Doors opening and closing at touch of button",
+      "Bespoke Lambswool Floor Rugs & Open-Pore Obsidian Veneer",
+      "Integrated Rolls-Royce Umbrellas with Teflon Coating",
+      "Refrigerated Champagne Cellar with Crystal Flutes"
+    ]
+  },
+  {
     id: "MAYBACH",
     name: "Mercedes-Maybach S-Class",
     brand: "Mercedes-Benz",
@@ -73,6 +107,40 @@ const LUXURY_FLEET_DATA = [
     ]
   },
   {
+    id: "CARNIVAL",
+    name: "Kia Carnival Limousine Plus",
+    brand: "Kia Black Label",
+    model: "Carnival Limousine Plus VIP",
+    type: "Executive VIP Lounge",
+    category: "lounge",
+    categoryLabel: "Executive VIP Lounge",
+    seats: 7,
+    bags: 6,
+    price: 15000,
+    priceHour: 750,
+    chauffeurRate: 2000,
+    deposit: 10000,
+    transmission: "8-Speed Sports Automatic",
+    fuel: "2.2L Smartstream CRDi Diesel",
+    status: "Available",
+    image: "assets/carnival.png",
+    tagline: "First-Class Limousine Suite on Wheels",
+    specs: {
+      power: "193 hp / 441 Nm",
+      engine: "2.2L Smartstream Turbo Diesel",
+      sound: "Bose 12-Speaker Premium Sound",
+      acceleration: "Smooth Torque-Rich Highway Glide"
+    },
+    features: [
+      "Second-Row Powered Relaxation Ottoman Seats with Leg Support",
+      "Dual Electric Panoramic Sunroofs with Independent Blinds",
+      "Bose 12-Speaker Centerpoint Audio Suite",
+      "One-Touch Smart Power Sliding Doors & Smart Tailgate",
+      "Tri-Zone Independent Climate Control with Roof Air Vents",
+      "Executive Sunshade Blinds & 64-Color Ambient Mood Lighting"
+    ]
+  },
+  {
     id: "M9",
     name: "MG M9 EV Sovereign Lounge",
     brand: "MG Luxury",
@@ -104,72 +172,6 @@ const LUXURY_FLEET_DATA = [
       "50W Fast Wireless Device Charging Pads at each VIP Seat",
       "Whisper-Quiet 0dB Cabin Architecture for Confidential Calls",
       "High-Definition Ceiling Theatre Screen with HDMI & Screen Mirroring"
-    ]
-  },
-  {
-    id: "SCLASS",
-    name: "Mercedes-Benz S-Class",
-    brand: "Mercedes-Benz",
-    model: "S 450 4MATIC",
-    type: "Executive Sedan",
-    category: "sedan",
-    categoryLabel: "Executive Luxury Sedan",
-    seats: 4,
-    bags: 3,
-    price: 20000,
-    priceHour: 1000,
-    chauffeurRate: 2000,
-    deposit: 12000,
-    transmission: "9G-TRONIC Automatic",
-    fuel: "Inline-6 Turbo Petrol",
-    status: "Available",
-    image: "assets/sclass.png",
-    tagline: "Unrivaled Elegance for Modern Executives",
-    specs: {
-      power: "367 hp",
-      engine: "3.0L Turbocharged Inline-6",
-      sound: "Burmester 3D Surround Sound",
-      acceleration: "0-100 km/h in 5.1s"
-    },
-    features: [
-      "AIRMATIC Dynamic Air Suspension with Level Control",
-      "Heated, Ventilated & Multi-Contour Massage Seats",
-      "Augmented Reality Head-Up Display",
-      "OLED Center Touchscreen & Wireless VIP Tablets",
-      "Double-Glazed Acoustic Comfort Glass"
-    ]
-  },
-  {
-    id: "BMW7",
-    name: "BMW 7 Series Protection",
-    brand: "BMW",
-    model: "740i M-Sport",
-    type: "Executive Sedan",
-    category: "sedan",
-    categoryLabel: "Executive Luxury Sedan",
-    seats: 4,
-    bags: 3,
-    price: 19000,
-    priceHour: 950,
-    chauffeurRate: 2000,
-    deposit: 12000,
-    transmission: "8-Speed Steptronic",
-    fuel: "TwinPower Turbo Petrol",
-    status: "Available",
-    image: "assets/bmw7.png",
-    tagline: "Futuristic Authority & Cinematic Travel",
-    specs: {
-      power: "381 hp",
-      engine: "3.0L BMW TwinPower Turbo",
-      sound: "Bowers & Wilkins Diamond Surround",
-      acceleration: "0-100 km/h in 5.4s"
-    },
-    features: [
-      "31.3\" 8K Ultrawide BMW Theatre Screen in the Rear",
-      "Panoramic Sky Lounge LED Glass Roof",
-      "Automatic Soft-Close & Sensor-Assisted Doors",
-      "Touch command panels integrated into rear door armrests",
-      "Integral Active Steering & Two-Axle Air Suspension"
     ]
   },
   {
@@ -206,70 +208,69 @@ const LUXURY_FLEET_DATA = [
     ]
   },
   {
-    id: "COACH",
-    name: "Mercedes Luxury VIP Coach",
-    brand: "Mercedes-Benz",
-    model: "Sprinter VIP Cruiser",
-    type: "VIP Group Mobility",
-    category: "coach",
-    categoryLabel: "VIP Group Mobility",
-    seats: 16,
-    bags: 14,
-    price: 35000,
-    priceHour: 1800,
-    chauffeurRate: 3000,
-    deposit: 20000,
-    transmission: "Automatic",
-    fuel: "Turbocharged Diesel",
-    status: "On request",
-    image: "assets/coach.svg",
-    tagline: "The Royal Convoy for Private Delegations",
+    id: "BMW7",
+    name: "BMW 7 Series Protection",
+    brand: "BMW",
+    model: "740i M-Sport",
+    type: "Executive Sedan",
+    category: "sedan",
+    categoryLabel: "Executive Luxury Sedan",
+    seats: 4,
+    bags: 3,
+    price: 19000,
+    priceHour: 950,
+    chauffeurRate: 2000,
+    deposit: 12000,
+    transmission: "8-Speed Steptronic",
+    fuel: "TwinPower Turbo Petrol",
+    status: "Available",
+    image: "assets/bmw7.png",
+    tagline: "Futuristic Authority & Cinematic Travel",
     specs: {
-      power: "190 hp",
-      engine: "Mercedes BlueTEC OM654",
-      sound: "Custom Multi-Zone Acoustic Audio",
-      acceleration: "Smooth Chauffeur Cruise"
+      power: "381 hp",
+      engine: "3.0L BMW TwinPower Turbo",
+      sound: "Bowers & Wilkins Diamond Surround",
+      acceleration: "0-100 km/h in 5.4s"
     },
     features: [
-      "16 Custom Handcrafted Diamond-Stitched Leather Captain Chairs",
-      "Onboard Espresso Bar, Champagne Chiller & Vanity Stateroom",
-      "Dual 43\" Smart Ultra-HD Presentation Screens",
-      "High-Speed Satellite Wi-Fi & 220V Laptop Power Outlets",
-      "Motorized Privacy Partitions & Aircraft-Style Ambient Lighting"
+      "31.3\" 8K Ultrawide BMW Theatre Screen in the Rear",
+      "Panoramic Sky Lounge LED Glass Roof",
+      "Automatic Soft-Close & Sensor-Assisted Doors",
+      "Touch command panels integrated into rear door armrests",
+      "Integral Active Steering & Two-Axle Air Suspension"
     ]
   },
   {
-    id: "GHOST",
-    name: "Rolls-Royce Ghost Series II",
-    brand: "Rolls-Royce",
-    model: "Ghost Extended",
-    type: "Ultra Luxury Sedan",
+    id: "SCLASS",
+    name: "Mercedes-Benz S-Class",
+    brand: "Mercedes-Benz",
+    model: "S 450 4MATIC",
+    type: "Executive Sedan",
     category: "sedan",
-    categoryLabel: "Ultra Luxury Pinnacle",
+    categoryLabel: "Executive Luxury Sedan",
     seats: 4,
     bags: 3,
-    price: 65000,
-    priceHour: 3200,
-    chauffeurRate: 5000,
-    deposit: 35000,
-    transmission: "Satellite-Aided 8-Speed",
-    fuel: "6.75L Twin-Turbo V12",
-    status: "On request",
-    image: "assets/ghost.svg",
-    tagline: "Post-Opulent Perfection and Peerless Prestige",
+    price: 20000,
+    priceHour: 1000,
+    chauffeurRate: 2000,
+    deposit: 12000,
+    transmission: "9G-TRONIC Automatic",
+    fuel: "Inline-6 Turbo Petrol",
+    status: "Available",
+    image: "assets/sclass.png",
+    tagline: "Unrivaled Elegance for Modern Executives",
     specs: {
-      power: "563 hp",
-      engine: "6.75L Twin-Turbo V12",
-      sound: "Bespoke Rolls-Royce 1300W Audio",
-      acceleration: "0-100 km/h in 4.7s Magic Carpet Ride"
+      power: "367 hp",
+      engine: "3.0L Turbocharged Inline-6",
+      sound: "Burmester 3D Surround Sound",
+      acceleration: "0-100 km/h in 5.1s"
     },
     features: [
-      "Shooting Star Starlight Headliner with hand-woven fiber optics",
-      "Planar Suspension System with Flagbearer Road-Reading Cameras",
-      "Effortless Power Doors opening and closing at touch of button",
-      "Bespoke Lambswool Floor Rugs & Open-Pore Obsidian Veneer",
-      "Integrated Rolls-Royce Umbrellas with Teflon Coating"
-    ]
+      "AIRMATIC Dynamic Air Suspension with Level Control",
+      "Heated, Ventilated & Multi-Contour Massage Seats",
+      "Augmented Reality Head-Up Display",
+      "OLED Center Touchscreen & Wireless VIP Tablets",
+      "Double-Glazed Acoustic Comfort Glass"
   }
 ];
 
@@ -282,18 +283,18 @@ const LUXURY_HUBS = [
 ];
 
 const INITIAL_BOOKINGS = [
-  { id: "KZ-UL-1042", guestName: "Vikramaditya Birla", guestPhone: "+91 98200 91823", guestEmail: "v.birla@investcorp.in", vehicleId: "MAYBACH", vehicleName: "Mercedes-Maybach S-Class", hubCode: "BOM", hubName: "Mumbai Hub", pickupCity: "Mumbai (BKC)", pickupDate: "2026-10-02", pickupTime: "10:00", returnDate: "2026-10-04", returnTime: "18:00", days: 2, total: 50000, chauffeur: true, status: "CONFIRMED" },
+  { id: "KZ-UL-1042", guestName: "Vikramaditya Birla", guestPhone: "+91 98200 91823", guestEmail: "v.birla@investcorp.in", vehicleId: "GHOST", vehicleName: "Rolls-Royce Ghost Series II", hubCode: "BOM", hubName: "Mumbai Hub", pickupCity: "Mumbai (BKC)", pickupDate: "2026-10-02", pickupTime: "10:00", returnDate: "2026-10-04", returnTime: "18:00", days: 2, total: 130000, chauffeur: true, status: "CONFIRMED" },
   { id: "KZ-UL-1041", guestName: "Aaradhya Kapoor", guestPhone: "+91 98110 44211", guestEmail: "aaradhya@kapoormedia.com", vehicleId: "VELLFIRE", vehicleName: "Toyota Vellfire Lounge", hubCode: "DEL", hubName: "Delhi NCR Hub", pickupCity: "New Delhi (Aerocity)", pickupDate: "2026-10-01", pickupTime: "08:30", returnDate: "2026-10-03", returnTime: "20:00", days: 2, total: 36000, chauffeur: true, status: "CONFIRMED" },
   { id: "KZ-UL-1040", guestName: "Jayesh Mehta", guestPhone: "+91 98980 77123", guestEmail: "mehta@suratgems.com", vehicleId: "RANGEROVER", vehicleName: "Range Rover Autobiography", hubCode: "STV", hubName: "Surat Hub", pickupCity: "Surat (Dumas)", pickupDate: "2026-09-30", pickupTime: "14:00", returnDate: "2026-10-02", returnTime: "14:00", days: 2, total: 48000, chauffeur: true, status: "ON_TRIP" },
-  { id: "KZ-UL-1039", guestName: "Rohan Deshmukh", guestPhone: "+91 98200 11982", guestEmail: "rohan@deshmukhfilms.in", vehicleId: "SCLASS", vehicleName: "Mercedes-Benz S-Class", hubCode: "BOM", hubName: "Mumbai Hub", pickupCity: "Mumbai (Juhu)", pickupDate: "2026-09-27", pickupTime: "09:00", returnDate: "2026-09-29", returnTime: "21:00", days: 2, total: 40000, chauffeur: true, status: "COMPLETED" },
+  { id: "KZ-UL-1039", guestName: "Rohan Deshmukh", guestPhone: "+91 98200 11982", guestEmail: "rohan@deshmukhfilms.in", vehicleId: "CARNIVAL", vehicleName: "Kia Carnival Limousine Plus", hubCode: "BOM", hubName: "Mumbai Hub", pickupCity: "Mumbai (Juhu)", pickupDate: "2026-09-27", pickupTime: "09:00", returnDate: "2026-09-29", returnTime: "21:00", days: 2, total: 30000, chauffeur: true, status: "COMPLETED" },
   { id: "KZ-UL-1038", guestName: "Zubin Mehta", guestPhone: "+91 98450 33881", guestEmail: "zubin@techventure.com", vehicleId: "BMW7", vehicleName: "BMW 7 Series Protection", hubCode: "BLR", hubName: "Bengaluru Hub", pickupCity: "Bengaluru (UB City)", pickupDate: "2026-10-04", pickupTime: "11:00", returnDate: "2026-10-06", returnTime: "18:00", days: 2, total: 38000, chauffeur: true, status: "CONFIRMED" },
-  { id: "KZ-UL-1037", guestName: "Farhan Wadia", guestPhone: "+91 98230 55912", guestEmail: "farhan@wadiaestates.com", vehicleId: "COACH", vehicleName: "Mercedes Luxury VIP Coach", hubCode: "GOI", hubName: "Goa Hub", pickupCity: "Goa (North Coast Villa)", pickupDate: "2026-10-10", pickupTime: "12:00", returnDate: "2026-10-13", returnTime: "12:00", days: 3, total: 105000, chauffeur: true, status: "CONFIRMED" }
+  { id: "KZ-UL-1037", guestName: "Farhan Wadia", guestPhone: "+91 98230 55912", guestEmail: "farhan@wadiaestates.com", vehicleId: "MAYBACH", vehicleName: "Mercedes-Maybach S-Class", hubCode: "GOI", hubName: "Goa Hub", pickupCity: "Goa (North Coast Villa)", pickupDate: "2026-10-10", pickupTime: "12:00", returnDate: "2026-10-13", returnTime: "12:00", days: 3, total: 75000, chauffeur: true, status: "CONFIRMED" }
 ];
 
 // Persistent state management
 class LuxuryDataManager {
   constructor() {
-    this.storageKey = "kruizly_black_label_state_v3";
+    this.storageKey = "kruizly_black_label_state_v4";
     this.activeHubKey = "kruizly_active_hub";
     this.init();
   }
@@ -312,12 +313,12 @@ class LuxuryDataManager {
         hubs: LUXURY_HUBS,
         bookings: INITIAL_BOOKINGS,
         kpis: {
-          revenue: 466213,
-          activeTrips: 14,
-          completedTrips: 126,
-          monthRevenue: 143816,
-          bookings: 178,
-          occupancy: 78
+          revenue: 546213,
+          activeTrips: 16,
+          completedTrips: 132,
+          monthRevenue: 168816,
+          bookings: 184,
+          occupancy: 82
         }
       };
       this.save();
@@ -413,7 +414,7 @@ class LuxuryDataManager {
     if (!vehicle.id) {
       vehicle.id = vehicle.name.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 10);
     }
-    if (!vehicle.image) vehicle.image = "assets/maybach.png";
+    if (!vehicle.image) vehicle.image = "assets/ghost.png";
     this.data.fleets.push(vehicle);
     this.save();
     return vehicle;

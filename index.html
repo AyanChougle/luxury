@@ -172,25 +172,79 @@
         </div>
       </div>
 
-      <!-- HERO INTERACTIVE SHOWCASE -->
+      <!-- HERO INTERACTIVE AUTO SLIDESHOW SHOWCASE -->
       <div class="hero-car">
         <div class="halo"></div>
+
         <div class="hero-car-preview">
-          <img id="heroCarPreview" src="assets/maybach.png" alt="Mercedes-Maybach S-Class">
+          <!-- Stage with Floor Shadow and Left/Right Navigation Arrows -->
+          <div class="slideshow-stage">
+            <div class="slideshow-floor-shadow"></div>
+            
+            <div class="slideshow-img-box">
+              <img id="heroCarPreview" class="slideshow-img" src="assets/ghost.png" alt="Rolls-Royce Ghost Series II">
+            </div>
+
+            <div class="slideshow-arrows">
+              <button type="button" class="slideshow-arrow-btn" onclick="heroSlideshowPrev()" aria-label="Previous Vehicle">❮</button>
+              <button type="button" class="slideshow-arrow-btn" onclick="heroSlideshowNext()" aria-label="Next Vehicle">❯</button>
+            </div>
+          </div>
+
+          <!-- Dynamic Caption & Meta Pill -->
           <div class="hero-car-caption">
-            <strong id="heroCarName">Mercedes-Maybach S-Class</strong>
-            <span id="heroCarTagline">The Benchmark of Sovereign Chauffeur Travel</span>
+            <strong id="heroCarName">Rolls-Royce Ghost Series II</strong>
+            <span id="heroCarTagline">Post-Opulent Perfection & Peerless Prestige</span>
+            
+            <div class="slideshow-meta-pill" id="heroCarMeta">
+              <span>Daily Tariff: <strong id="heroCarPrice">₹65,000</strong></span>
+              <span>•</span>
+              <span id="heroCarSeats">4 VIP Seats</span>
+              <span>•</span>
+              <span id="heroCarPower">563 hp V12</span>
+            </div>
+          </div>
+
+          <!-- Direct Reserve Button -->
+          <div style="margin-top:14px;display:flex;gap:10px;justify-content:center">
+            <button type="button" class="btn gold" id="heroReserveBtn" onclick="reserveCurrentHeroCar()" style="padding:10px 22px;font-size:12px;box-shadow:var(--shadow-gold)">
+              Reserve Rolls-Royce Ghost Series II →
+            </button>
+          </div>
+
+          <!-- Slide Dots -->
+          <div class="slideshow-dots">
+            <button type="button" class="slideshow-dot active" onclick="goToHeroSlide(0)" aria-label="Slide 1"></button>
+            <button type="button" class="slideshow-dot" onclick="goToHeroSlide(1)" aria-label="Slide 2"></button>
+            <button type="button" class="slideshow-dot" onclick="goToHeroSlide(2)" aria-label="Slide 3"></button>
+            <button type="button" class="slideshow-dot" onclick="goToHeroSlide(3)" aria-label="Slide 4"></button>
+            <button type="button" class="slideshow-dot" onclick="goToHeroSlide(4)" aria-label="Slide 5"></button>
+            <button type="button" class="slideshow-dot" onclick="goToHeroSlide(5)" aria-label="Slide 6"></button>
+            <button type="button" class="slideshow-dot" onclick="goToHeroSlide(6)" aria-label="Slide 7"></button>
+            <button type="button" class="slideshow-dot" onclick="goToHeroSlide(7)" aria-label="Slide 8"></button>
+          </div>
+
+          <!-- Progress Bar & Pause/Play Toggle -->
+          <div class="slideshow-progress-container">
+            <div class="slideshow-progress">
+              <div id="heroProgressBar" class="slideshow-progress-bar"></div>
+            </div>
+            <button type="button" id="heroPlayPauseBtn" class="slideshow-toggle-btn" onclick="toggleHeroSlideshowPlayPause()" title="Pause auto slideshow">
+              ❚❚ Pause
+            </button>
           </div>
         </div>
 
-        <!-- Quick Switcher Pills -->
+        <!-- Quick Switcher Pills for Instant Selection -->
         <div class="hero-switcher">
-          <button type="button" class="hero-pill active" onclick="switchHeroCar('MAYBACH', this)">Maybach S-Class</button>
-          <button type="button" class="hero-pill" onclick="switchHeroCar('VELLFIRE', this)">Vellfire Lounge</button>
-          <button type="button" class="hero-pill" onclick="switchHeroCar('M9', this)">MG M9 Lounge</button>
-          <button type="button" class="hero-pill" onclick="switchHeroCar('SCLASS', this)">S-Class S450</button>
-          <button type="button" class="hero-pill" onclick="switchHeroCar('RANGEROVER', this)">Range Rover LWB</button>
-          <button type="button" class="hero-pill" onclick="switchHeroCar('GHOST', this)">Rolls-Royce Ghost</button>
+          <button type="button" class="hero-pill active" data-slide="GHOST" onclick="goToHeroSlide('GHOST')">Rolls-Royce Ghost</button>
+          <button type="button" class="hero-pill" data-slide="MAYBACH" onclick="goToHeroSlide('MAYBACH')">Maybach S-Class</button>
+          <button type="button" class="hero-pill" data-slide="VELLFIRE" onclick="goToHeroSlide('VELLFIRE')">Vellfire Lounge</button>
+          <button type="button" class="hero-pill" data-slide="CARNIVAL" onclick="goToHeroSlide('CARNIVAL')">Carnival Limousine</button>
+          <button type="button" class="hero-pill" data-slide="M9" onclick="goToHeroSlide('M9')">MG M9 EV</button>
+          <button type="button" class="hero-pill" data-slide="RANGEROVER" onclick="goToHeroSlide('RANGEROVER')">Range Rover LWB</button>
+          <button type="button" class="hero-pill" data-slide="BMW7" onclick="goToHeroSlide('BMW7')">BMW 7 Series</button>
+          <button type="button" class="hero-pill" data-slide="SCLASS" onclick="goToHeroSlide('SCLASS')">S-Class S450</button>
         </div>
       </div>
     </section>
@@ -206,13 +260,16 @@
         <span class="section-no">01 / 04</span>
       </div>
 
-      <!-- Category Filter Tabs -->
+      <!-- Live Search & Category Filter Tabs -->
+      <div style="margin-bottom:20px;max-width:440px">
+        <input id="fleet-search" placeholder="Search Ghost, Maybach, Vellfire, Carnival, M9..." style="font-size:13px;padding:12px 16px">
+      </div>
+
       <div class="fleet-tabs" id="fleet-tabs">
-        <button type="button" class="fleet-tab active" data-category="all">All Fleets (7)</button>
-        <button type="button" class="fleet-tab" data-category="sedan">Ultra Sedans</button>
-        <button type="button" class="fleet-tab" data-category="lounge">VIP Lounges</button>
-        <button type="button" class="fleet-tab" data-category="suv">Flagship SUVs</button>
-        <button type="button" class="fleet-tab" data-category="coach">Royal Coaches</button>
+        <button type="button" class="fleet-tab active" data-category="all">All Fleets (8)</button>
+        <button type="button" class="fleet-tab" data-category="sedan">Ultra Sedans (4)</button>
+        <button type="button" class="fleet-tab" data-category="lounge">VIP Lounges (3)</button>
+        <button type="button" class="fleet-tab" data-category="suv">Flagship SUVs (1)</button>
       </div>
 
       <!-- Dynamic Fleet Grid -->
@@ -570,30 +627,11 @@
   <script src="shared/api.js"></script>
   <script src="shared/app.js"></script>
   <script>
-    // Hero Car Switcher Helper
-    function switchHeroCar(id, btnEl) {
-      if (typeof window.luxuryDataMgr === "undefined") return;
-      const f = window.luxuryDataMgr.getFleetById(id);
-      if (!f) return;
-
-      const preview = document.getElementById("heroCarPreview");
-      const name = document.getElementById("heroCarName");
-      const tagline = document.getElementById("heroCarTagline");
-
-      if (preview) {
-        preview.style.opacity = "0";
-        preview.style.transform = "scale(0.96)";
-        setTimeout(() => {
-          preview.src = f.image;
-          preview.style.opacity = "1";
-          preview.style.transform = "scale(1)";
-        }, 180);
+    // Alias legacy switcher to slideshow engine
+    function switchHeroCar(id) {
+      if (typeof window.goToHeroSlide === "function") {
+        window.goToHeroSlide(id);
       }
-      if (name) name.textContent = f.name;
-      if (tagline) tagline.textContent = f.tagline || f.type;
-
-      document.querySelectorAll(".hero-pill").forEach(p => p.classList.remove("active"));
-      if (btnEl) btnEl.classList.add("active");
     }
   </script>
 </body>

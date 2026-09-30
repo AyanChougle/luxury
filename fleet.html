@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Sovereign Fleet Collection — KRUIZLY Black Label</title>
-  <meta name="description" content="Explore India's most exclusive fleet of sovereign chauffeur-driven vehicles: Mercedes-Maybach, Rolls-Royce Ghost, Toyota Vellfire Lounge, Range Rover Autobiography, and Mercedes VIP Coach.">
+  <meta name="description" content="Explore India's most exclusive fleet of sovereign chauffeur-driven vehicles: Rolls-Royce Ghost, Mercedes-Maybach, Toyota Vellfire Lounge, Range Rover Autobiography, Kia Carnival, and MG M9 EV Lounge.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
@@ -156,15 +156,14 @@
 
       <!-- Live Search & Category Filter Tabs -->
       <div style="margin-bottom:20px;max-width:440px">
-        <input id="fleet-search" placeholder="Search Maybach, Vellfire, M9 EV, S-Class, BMW 7..." style="font-size:13px;padding:12px 16px">
+        <input id="fleet-search" placeholder="Search Ghost, Maybach, Vellfire, Carnival, M9, Range Rover..." style="font-size:13px;padding:12px 16px">
       </div>
 
       <div class="fleet-tabs" id="fleet-tabs">
         <button type="button" class="fleet-tab active" data-category="all">All Fleets (8)</button>
         <button type="button" class="fleet-tab" data-category="sedan">Ultra Sedans (4)</button>
-        <button type="button" class="fleet-tab" data-category="lounge">VIP Lounges (2)</button>
+        <button type="button" class="fleet-tab" data-category="lounge">VIP Lounges (3)</button>
         <button type="button" class="fleet-tab" data-category="suv">Flagship SUVs (1)</button>
-        <button type="button" class="fleet-tab" data-category="coach">Royal Coaches (1)</button>
       </div>
 
       <!-- Fleet Cards Grid -->
@@ -200,6 +199,17 @@
           </thead>
           <tbody>
             <tr>
+              <td><strong style="color:var(--gold2)">Rolls-Royce Ghost Series II</strong></td>
+              <td>Ultra Luxury Pinnacle</td>
+              <td>4 VIP / 3 Bags</td>
+              <td>Bespoke Audio (1300W)</td>
+              <td>6.75L V12 Twin-Turbo</td>
+              <td><b style="color:var(--gold)">₹65,000</b></td>
+              <td>₹5,000/day</td>
+              <td><span class="table-badge">Available</span></td>
+              <td><button class="btn gold" style="padding:6px 14px;font-size:11px" onclick="selectAndBookFleet('GHOST')">Reserve</button></td>
+            </tr>
+            <tr>
               <td><strong style="color:var(--gold2)">Mercedes-Maybach S-Class</strong></td>
               <td>Ultra Luxury Sedan</td>
               <td>4 VIP / 3 Bags</td>
@@ -220,6 +230,17 @@
               <td>₹2,000/day</td>
               <td><span class="table-badge">Available</span></td>
               <td><button class="btn gold" style="padding:6px 14px;font-size:11px" onclick="selectAndBookFleet('VELLFIRE')">Reserve</button></td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--gold2)">Kia Carnival Limousine Plus</strong></td>
+              <td>Executive VIP Lounge</td>
+              <td>7 VIP / 6 Bags</td>
+              <td>Bose 12-Speaker Sound</td>
+              <td>2.2L CRDi Turbo Diesel</td>
+              <td><b style="color:var(--gold)">₹15,000</b></td>
+              <td>₹2,000/day</td>
+              <td><span class="table-badge">Available</span></td>
+              <td><button class="btn gold" style="padding:6px 14px;font-size:11px" onclick="selectAndBookFleet('CARNIVAL')">Reserve</button></td>
             </tr>
             <tr>
               <td><strong style="color:var(--gold2)">MG M9 EV Sovereign Lounge</strong></td>
@@ -264,28 +285,6 @@
               <td>₹2,500/day</td>
               <td><span class="table-badge">Available</span></td>
               <td><button class="btn gold" style="padding:6px 14px;font-size:11px" onclick="selectAndBookFleet('RANGEROVER')">Reserve</button></td>
-            </tr>
-            <tr>
-              <td><strong style="color:var(--gold2)">Mercedes VIP Luxury Coach</strong></td>
-              <td>VIP Group Mobility</td>
-              <td>16 VIP / 14 Bags</td>
-              <td>Multi-Zone Acoustic</td>
-              <td>Mercedes BlueTEC OM654</td>
-              <td><b style="color:var(--gold)">₹35,000</b></td>
-              <td>₹3,000/day</td>
-              <td><span class="table-badge" style="color:var(--warning);border-color:rgba(251,191,36,0.3);background:rgba(251,191,36,0.1)">On Request</span></td>
-              <td><button class="btn gold" style="padding:6px 14px;font-size:11px" onclick="selectAndBookFleet('COACH')">Reserve</button></td>
-            </tr>
-            <tr>
-              <td><strong style="color:var(--gold2)">Rolls-Royce Ghost Series II</strong></td>
-              <td>Ultra Luxury Pinnacle</td>
-              <td>4 VIP / 3 Bags</td>
-              <td>Bespoke Audio (1300W)</td>
-              <td>6.75L V12 Twin-Turbo</td>
-              <td><b style="color:var(--gold)">₹65,000</b></td>
-              <td>₹5,000/day</td>
-              <td><span class="table-badge" style="color:var(--warning);border-color:rgba(251,191,36,0.3);background:rgba(251,191,36,0.1)">On Request</span></td>
-              <td><button class="btn gold" style="padding:6px 14px;font-size:11px" onclick="selectAndBookFleet('GHOST')">Reserve</button></td>
             </tr>
           </tbody>
         </table>

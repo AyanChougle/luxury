@@ -55,20 +55,169 @@ function parseUrlParams() {
   }
 }
 
-// Hero Car Live Interactive Spotlight
+// ==========================================================================
+// HERO AUTOMATIC SLIDESHOW ENGINE
+// Cycles through the 8 premier vehicles with progress bar, pause/resume, and dots
+// ==========================================================================
+
+const HERO_SLIDES = [
+  { id: "GHOST", name: "Rolls-Royce Ghost Series II", tagline: "Post-Opulent Perfection & Peerless Prestige", image: "assets/ghost.png", price: 65000, seats: "4 VIP Seats", power: "563 hp V12" },
+  { id: "MAYBACH", name: "Mercedes-Maybach S-Class", tagline: "The Benchmark of Sovereign Chauffeur Travel", image: "assets/maybach.png", price: 25000, seats: "4 VIP Seats", power: "503 hp V8 Biturbo" },
+  { id: "VELLFIRE", name: "Toyota Vellfire Lounge", tagline: "Private Jet Mobility on the Ground", image: "assets/vellfire.png", price: 18000, seats: "6 VIP Seats", power: "193 hp Hybrid Glide" },
+  { id: "CARNIVAL", name: "Kia Carnival Limousine Plus", tagline: "First-Class Limousine Suite on Wheels", image: "assets/carnival.png", price: 15000, seats: "7 VIP Seats", power: "193 hp Turbo Diesel" },
+  { id: "M9", name: "MG M9 EV Sovereign Lounge", tagline: "Zero-Emission Boardroom on Wheels", image: "assets/m9.png", price: 17500, seats: "6 VIP Seats", power: "245 hp Pure EV" },
+  { id: "RANGEROVER", name: "Range Rover Autobiography", tagline: "Commanding Presence with Unmatched Serenity", image: "assets/rangerover.png", price: 24000, seats: "5 VIP Seats", power: "350 hp Twin-Turbo" },
+  { id: "BMW7", name: "BMW 7 Series Protection", tagline: "Futuristic Authority & Cinematic Travel", image: "assets/bmw7.png", price: 19000, seats: "4 VIP Seats", power: "381 hp TwinPower" },
+  { id: "SCLASS", name: "Mercedes-Benz S-Class", tagline: "Unrivaled Elegance for Modern Executives", image: "assets/sclass.png", price: 20000, seats: "4 VIP Seats", power: "367 hp Inline-6" }
+];
+
+let heroSlideIndex = 0;
+let heroProgressTimer = null;
+let heroSlideIsPaused = false;
+let heroSlideProgress = 0;
+const HERO_SLIDE_DURATION = 4000;
+const HERO_PROGRESS_STEP = 50;
+
 function initHeroShowcase() {
   const heroCarPreview = document.getElementById("heroCarPreview");
-  const heroCarName = document.getElementById("heroCarName");
-  const heroCarTagline = document.getElementById("heroCarTagline");
+  if (!heroCarPreview) return;
 
-  if (!heroCarPreview || !window.LUXURY_DATA) return;
+  // Preload all slideshow images for instant transitions
+  HERO_SLIDES.forEach(s => {
+    const img = new Image();
+    img.src = s.image;
+  });
 
-  const fleet = window.luxuryDataMgr.getFleetById(activeVehicleId) || window.LUXURY_DATA.fleets[0];
-  if (fleet) {
-    heroCarPreview.src = fleet.image;
-    if (heroCarName) heroCarName.textContent = fleet.name;
-    if (heroCarTagline) heroCarTagline.textContent = fleet.tagline || fleet.type;
+  // Check if an activeVehicleId was supplied via URL or initial state
+  const foundIdx = HERO_SLIDES.findIndex(s => s.id === activeVehicleId);
+  if (foundIdx >= 0) heroSlideIndex = foundIdx;
+
+  renderHeroSlide(heroSlideIndex, false);
+  startHeroProgressTimer();
+
+  // Attach hover pause/resume events to the showcase stage
+  const heroCarContainer = document.querySelector(".hero-car");
+  if (heroCarContainer) {
+    heroCarContainer.addEventListener("mouseenter", () => {
+      heroSlideIsPaused = true;
+      updatePlayPauseButton();
+    });
+    heroCarContainer.addEventListener("mouseleave", () => {
+      heroSlideIsPaused = false;
+      updatePlayPauseButton();
+    });
   }
+}
+
+function renderHeroSlide(index, animate = true) {
+  const slide = HERO_SLIDES[index];
+  if (!slide) return;
+
+  const preview = document.getElementById("heroCarPreview");
+  const nameEl = document.getElementById("heroCarName");
+  const taglineEl = document.getElementById("heroCarTagline");
+  const priceEl = document.getElementById("heroCarPrice");
+  const seatsEl = document.getElementById("heroCarSeats");
+  const powerEl = document.getElementById("heroCarPower");
+  const reserveBtn = document.getElementById("heroReserveBtn");
+
+  if (preview) {
+    if (animate) {
+      preview.style.opacity = "0";
+      preview.style.transform = "scale(0.96)";
+      setTimeout(() => {
+        preview.src = slide.image;
+        preview.alt = slide.name;
+        preview.style.opacity = "1";
+        preview.style.transform = "scale(1)";
+      }, 180);
+    } else {
+      preview.src = slide.image;
+      preview.alt = slide.name;
+      preview.style.opacity = "1";
+      preview.style.transform = "scale(1)";
+    }
+  }
+
+  if (nameEl) nameEl.textContent = slide.name;
+  if (taglineEl) taglineEl.textContent = slide.tagline;
+  if (priceEl) priceEl.textContent = money(slide.price);
+  if (seatsEl) seatsEl.textContent = slide.seats;
+  if (powerEl) powerEl.textContent = slide.power;
+  if (reserveBtn) reserveBtn.textContent = `Reserve ${slide.name} →`;
+
+  activeVehicleId = slide.id;
+
+  // Update dots
+  document.querySelectorAll(".slideshow-dot").forEach((dot, i) => {
+    dot.classList.toggle("active", i === index);
+  });
+
+  // Update switcher pills
+  document.querySelectorAll(".hero-pill").forEach(pill => {
+    const pillId = pill.dataset.slide || pill.getAttribute("data-slide");
+    pill.classList.toggle("active", pillId === slide.id);
+  });
+}
+
+function startHeroProgressTimer() {
+  if (heroProgressTimer) clearInterval(heroProgressTimer);
+  heroSlideProgress = 0;
+  const bar = document.getElementById("heroProgressBar");
+  if (bar) bar.style.width = "0%";
+
+  heroProgressTimer = setInterval(() => {
+    if (!heroSlideIsPaused) {
+      heroSlideProgress += (HERO_PROGRESS_STEP / HERO_SLIDE_DURATION) * 100;
+      if (bar) bar.style.width = `${Math.min(heroSlideProgress, 100)}%`;
+
+      if (heroSlideProgress >= 100) {
+        heroSlideshowNext();
+      }
+    }
+  }, HERO_PROGRESS_STEP);
+}
+
+function heroSlideshowNext() {
+  heroSlideIndex = (heroSlideIndex + 1) % HERO_SLIDES.length;
+  renderHeroSlide(heroSlideIndex, true);
+  startHeroProgressTimer();
+}
+
+function heroSlideshowPrev() {
+  heroSlideIndex = (heroSlideIndex - 1 + HERO_SLIDES.length) % HERO_SLIDES.length;
+  renderHeroSlide(heroSlideIndex, true);
+  startHeroProgressTimer();
+}
+
+function goToHeroSlide(target) {
+  if (typeof target === "string") {
+    const idx = HERO_SLIDES.findIndex(s => s.id === target.toUpperCase());
+    if (idx >= 0) heroSlideIndex = idx;
+  } else if (typeof target === "number") {
+    heroSlideIndex = target % HERO_SLIDES.length;
+  }
+  renderHeroSlide(heroSlideIndex, true);
+  startHeroProgressTimer();
+}
+
+function toggleHeroSlideshowPlayPause() {
+  heroSlideIsPaused = !heroSlideIsPaused;
+  updatePlayPauseButton();
+}
+
+function updatePlayPauseButton() {
+  const btn = document.getElementById("heroPlayPauseBtn");
+  if (btn) {
+    btn.innerHTML = heroSlideIsPaused ? "▶ Play Auto" : "❚❚ Pause";
+    btn.setAttribute("title", heroSlideIsPaused ? "Resume auto slideshow" : "Pause auto slideshow");
+  }
+}
+
+function reserveCurrentHeroCar() {
+  const currentSlide = HERO_SLIDES[heroSlideIndex];
+  if (!currentSlide) return;
+  selectAndBookFleet(currentSlide.id);
 }
 
 // Populate select inputs for Fleet & Regional Hubs
@@ -506,3 +655,8 @@ window.applyPromoCode = applyPromoCode;
 window.requestRide = requestRide;
 window.closeModals = closeModals;
 window.showBookingConfirmationPass = showBookingConfirmationPass;
+window.heroSlideshowNext = heroSlideshowNext;
+window.heroSlideshowPrev = heroSlideshowPrev;
+window.goToHeroSlide = goToHeroSlide;
+window.toggleHeroSlideshowPlayPause = toggleHeroSlideshowPlayPause;
+window.reserveCurrentHeroCar = reserveCurrentHeroCar;
